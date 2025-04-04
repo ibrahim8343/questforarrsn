@@ -1,0 +1,426 @@
+[gd_scene load_steps=26 format=3 uid="uid://bywqqrmmqtcpk"]
+
+[ext_resource type="Script" uid="uid://ia628h6yaojv" path="res://GUI/pause_menu/pause_menu.gd" id="1_uh5g0"]
+[ext_resource type="Texture2D" uid="uid://bmjan6873e3h5" path="res://Items/sprites/items.png" id="2_6f15s"]
+[ext_resource type="Script" uid="uid://b34ukmw1e7pax" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_kwke8"]
+[ext_resource type="PackedScene" uid="uid://dndwapovgam4d" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_x4v76"]
+[ext_resource type="Resource" uid="uid://djd6vwckdo4ya" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="4_cwt50"]
+[ext_resource type="Texture2D" uid="uid://d2b30nmoynyc2" path="res://Items/sprites/gear.png" id="6_dcvp3"]
+[ext_resource type="PackedScene" uid="uid://dunuubhkvov76" path="res://GUI/pause_menu/stats/stats.tscn" id="6_y6avm"]
+[ext_resource type="Script" uid="uid://v8exnhqk3spq" path="res://GUI/pause_menu/quests_ui.gd" id="7_hbgqu"]
+[ext_resource type="PackedScene" uid="uid://b76wnkiyk1lhy" path="res://GUI/pause_menu/quests/quest_item.tscn" id="7_kj7xb"]
+[ext_resource type="PackedScene" uid="uid://dxfstusrlgtqu" path="res://GUI/pause_menu/quests/quest_step_item.tscn" id="10_5ptfk"]
+[ext_resource type="FontFile" uid="uid://dayhk5dhvoglr" path="res://GUI/fonts/arfonts-sp-bardiya-normal.ttf" id="11_cvrss"]
+[ext_resource type="FontFile" uid="uid://dmxehx3bhr6o7" path="res://fount/Cairo-VariableFont_slnt,wght.ttf" id="12_ak53x"]
+[ext_resource type="FontFile" uid="uid://cm42toqa6loiv" path="res://GUI/fonts/arfonts-dg-tebian-black.ttf" id="14_fgl3m"]
+[ext_resource type="Texture2D" uid="uid://ct1a77q8e1gdj" path="res://GUI/pause_menu/1-bit_UI_byBatuhanK.png" id="15_ak53x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3762"]
+atlas = ExtResource("2_6f15s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d3jqj"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_u3762")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mwyn"]
+atlas = ExtResource("6_dcvp3")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s1vjy"]
+load_path = "res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwvth"]
+atlas = SubResource("CompressedTexture2D_s1vjy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t6fnq"]
+load_path = "res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi0tn"]
+atlas = SubResource("CompressedTexture2D_t6fnq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f26y2"]
+load_path = "res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug6r6"]
+atlas = SubResource("CompressedTexture2D_f26y2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00kwt"]
+atlas = ExtResource("15_ak53x")
+region = Rect2(268, 11, 18, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak53x"]
+atlas = ExtResource("15_ak53x")
+region = Rect2(268, 11, 0, 17)
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_uh5g0")
+metadata/_edit_horizontal_guides_ = [66.0, 226.0]
+metadata/_edit_vertical_guides_ = [824.0]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.997918)
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.141176, 0.141176, 0.831373)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+max_polyphony = 4
+
+[node name="TabContainer" type="TabContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+tab_alignment = 1
+current_tab = 0
+
+[node name="الحقيبة" type="Control" parent="Control/TabContainer"]
+layout_mode = 2
+mouse_filter = 2
+metadata/_tab_index = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/الحقيبة"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = 35.2128
+offset_right = 209.0
+offset_bottom = 195.213
+scale = Vector2(3, 3)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_d3jqj")
+
+[node name="GridContainer" type="GridContainer" parent="Control/TabContainer/الحقيبة/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_kwke8")
+data = ExtResource("4_cwt50")
+
+[node name="InventorySlot" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="Control/TabContainer/الحقيبة/PanelContainer/GridContainer" instance=ExtResource("3_x4v76")]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/TabContainer/الحقيبة"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 283.73
+offset_right = 928.0
+offset_bottom = 371.73
+scale = Vector2(2.5, 2.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_d3jqj")
+
+[node name="GridContainer" type="GridContainer" parent="Control/TabContainer/الحقيبة/PanelContainer2"]
+layout_mode = 2
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_2mwyn")
+stretch_mode = 3
+
+[node name="InventorySlot_Armor" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer" instance=ExtResource("3_x4v76")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_gwvth")
+stretch_mode = 3
+
+[node name="InventorySlot_Amulet" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer" instance=ExtResource("3_x4v76")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_fi0tn")
+stretch_mode = 3
+
+[node name="InventorySlot_Weapon" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer" instance=ExtResource("3_x4v76")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ug6r6")
+stretch_mode = 3
+
+[node name="InventorySlot_Ring" parent="Control/TabContainer/الحقيبة/PanelContainer2/GridContainer" instance=ExtResource("3_x4v76")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Stats" parent="Control/TabContainer/الحقيبة" instance=ExtResource("6_y6avm")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 38.0
+offset_top = 37.217
+offset_right = 575.0
+offset_bottom = 253.217
+grow_horizontal = 1
+
+[node name="ItemDescription" type="Label" parent="Control/TabContainer/الحقيبة"]
+modulate = Color(1, 1, 1, 0.643137)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = 191.718
+offset_right = 82230.0
+offset_bottom = 12869.7
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.01, 0.01)
+theme_override_fonts/font = ExtResource("12_ak53x")
+theme_override_font_sizes/font_size = 2000
+text = "هذا المزمار كان أداة سرية بحوزة سايلوس، وكان يحوي بين نغماته أسراراً قديمة وقوة غامضة. منذ أن وقع في يده، أصبح يحمل معه ظلًا مظلمًا. يبحث أدريان الآن بحرص عن هذا المزمار ليعيده إلى مكانه، حيث يقال إن من يعثر عليه سيحصل على معرفة ممنوعه قد تغير مسار العالم"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="المهام" type="Control" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("7_hbgqu")
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/المهام"]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 11.1627
+offset_right = 822.0
+offset_bottom = 211.163
+scale = Vector2(3, 2.945)
+follow_focus = true
+scroll_vertical_custom_step = 100.0
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/TabContainer/المهام/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/المهام/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="QuestItem" parent="Control/TabContainer/المهام/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_kj7xb")]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_cvrss")
+
+[node name="QuestItem2" parent="Control/TabContainer/المهام/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_kj7xb")]
+layout_mode = 2
+
+[node name="QuestItem3" parent="Control/TabContainer/المهام/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_kj7xb")]
+layout_mode = 2
+
+[node name="QuestItem4" parent="Control/TabContainer/المهام/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_kj7xb")]
+layout_mode = 2
+
+[node name="QuestItem5" parent="Control/TabContainer/المهام/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_kj7xb")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/المهام"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 46.2358
+offset_right = 264.0
+offset_bottom = 266.236
+scale = Vector2(2, 2)
+
+[node name="description_label" type="Label" parent="Control/TabContainer/المهام/VBoxContainer"]
+modulate = Color(0.529067, 0.529067, 0.529067, 1)
+custom_minimum_size = Vector2(215, 10)
+layout_mode = 2
+text = "وييييييييييييييهايسش خبتععتهيس
+بسيشبسش
+بسش
+بسشبس"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Control/TabContainer/المهام/VBoxContainer"]
+custom_minimum_size = Vector2(215, 10)
+layout_mode = 2
+text = "عنوان المهمة"
+
+[node name="SpacerControl" type="Control" parent="Control/TabContainer/المهام/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="QuestStepItem" parent="Control/TabContainer/المهام/VBoxContainer" instance=ExtResource("10_5ptfk")]
+layout_mode = 2
+
+[node name="QuestStepItem2" parent="Control/TabContainer/المهام/VBoxContainer" instance=ExtResource("10_5ptfk")]
+layout_mode = 2
+
+[node name="QuestStepItem3" parent="Control/TabContainer/المهام/VBoxContainer" instance=ExtResource("10_5ptfk")]
+layout_mode = 2
+
+[node name="الاعدادات" type="Control" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/الاعدادات"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -227.154
+offset_right = -88.0
+offset_bottom = -90.1537
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="Button_Save" type="Button" parent="Control/TabContainer/الاعدادات/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_fgl3m")
+text = "حفظ
+"
+
+[node name="Button_Load" type="Button" parent="Control/TabContainer/الاعدادات/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_fgl3m")
+text = "تحميل
+"
+
+[node name="Button_Quit" type="Button" parent="Control/TabContainer/الاعدادات/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_fgl3m")
+text = "خروج
+"
+
+[node name="Label" type="Label" parent="Control"]
+modulate = Color(1, 1, 1, 0.643137)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -479.0
+offset_top = -349.979
+offset_right = -310.0
+offset_bottom = -303.979
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 33
+text = "ايقاف مؤقت"
+
+[node name="BackPack" type="TouchScreenButton" parent="Control"]
+position = Vector2(23, 8.01669)
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_00kwt")
+texture_pressed = SubResource("AtlasTexture_ak53x")
+action = "pause"

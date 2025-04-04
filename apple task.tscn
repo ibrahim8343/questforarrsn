@@ -1,0 +1,498 @@
+[gd_scene load_steps=19 format=3 uid="uid://dtgfrf1noregb"]
+
+[ext_resource type="PackedScene" uid="uid://cwby8egx8vwx2" path="res://quests/utility_nodes/quest_activated_switch.tscn" id="1_lvcmc"]
+[ext_resource type="PackedScene" uid="uid://b22o8rtjyby8c" path="res://Interactables/dialog/dialog_interaction.tscn" id="2_4fsu0"]
+[ext_resource type="Script" uid="uid://7qrcj0xrfdwc" path="res://Interactables/dialog/scripts/dialog_text.gd" id="3_gv2jf"]
+[ext_resource type="Resource" uid="uid://ddvgr3oiklaj7" path="res://npc/00_npcs/npc_04.tres" id="4_ki8tp"]
+[ext_resource type="Script" uid="uid://bhoxv42n8rdsq" path="res://Interactables/dialog/scripts/dialog_choice.gd" id="5_dpt5e"]
+[ext_resource type="Script" uid="uid://c80ln4eok2stu" path="res://Interactables/dialog/scripts/dialog_branch.gd" id="6_jb26f"]
+[ext_resource type="PackedScene" uid="uid://b523kljtfiar7" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="7_us6vm"]
+[ext_resource type="Resource" uid="uid://2ttp6v5af3bt" path="res://quests/apple_qus.tres" id="8_5amom"]
+[ext_resource type="Resource" uid="uid://cdc3sykvmnn27" path="res://npc/00_npcs/00_hero.tres" id="9_x7t4y"]
+[ext_resource type="PackedScene" uid="uid://bi8crg3nv50qw" path="res://npc/npc.tscn" id="10_us6vm"]
+[ext_resource type="Resource" uid="uid://bqfxxks18ou8u" path="res://npc/00_npcs/npc_02.tres" id="11_5amom"]
+[ext_resource type="PackedScene" uid="uid://dpenv0euqqlkg" path="res://npc/npc_behavior_patrol.tscn" id="12_x7t4y"]
+[ext_resource type="PackedScene" uid="uid://dyhn3j7qk4dqw" path="res://npc/patrol_location.tscn" id="13_7u6vx"]
+[ext_resource type="Resource" uid="uid://cvnr3a38pmudn" path="res://quests/spider.tres" id="14_pnx30"]
+[ext_resource type="Script" uid="uid://cj17f33sisctc" path="res://quests/utility_nodes/quest_activated_switch.gd" id="15_ot1uf"]
+
+[sub_resource type="GDScript" id="GDScript_7u6vx"]
+script/source = "extends Node
+
+@onready var quest_advance_trigger: QuestAdvanceTrigger = $\"..\"
+
+
+func _ready() -> void:
+	quest_advance_trigger.advanced.connect( quest_complete )
+
+
+func quest_complete() -> void:
+	PlayerManager.INVENTORY_DATA.use_item( load(\"res://Items/holmz_apple.tres\") )
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_n6wx4"]
+script/source = "extends Node
+
+@onready var quest_advance_trigger: QuestAdvanceTrigger = $\"..\"
+
+
+func _ready() -> void:
+	quest_advance_trigger.advanced.connect( quest_complete )
+
+
+func quest_complete() -> void:
+	PlayerManager.INVENTORY_DATA.use_item( load(\"res://Items/magical_flute.tres\") )
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_us6vm"]
+script/source = "extends Node
+
+@onready var quest_advance_trigger: QuestAdvanceTrigger = $\"..\"
+
+
+func _ready() -> void:
+	quest_advance_trigger.advanced.connect( quest_complete )
+
+
+func quest_complete() -> void:
+	PlayerManager.INVENTORY_DATA.use_item( load(\"res://Items/holmz_apple.tres\") )
+	pass
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="QuestActivatedSwitch3" parent="." instance=ExtResource("1_lvcmc")]
+
+[node name="DialogInteraction" parent="QuestActivatedSwitch3" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch3/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "هل تريد أن أعطيك سلاحًا قد يساعدك في مهمتك"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="QuestActivatedSwitch3/DialogInteraction"]
+script = ExtResource("5_dpt5e")
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = " نعم أحتاج إلى السلاح كيف يمكنني الحصول عليه"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("3_gv2jf")
+text = "حسنًا هناك شرط واحد إذا جلبت لي عشر تفاحات سأعلمك كيفية استخدام السلاح وتفعيل حركاته الخاصة"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("5_dpt5e")
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = "موافق سأبحث عن التفاحات وأحضرها لك"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("3_gv2jf")
+text = "ممتاز التفاحات هي الطريقة الوحيدة لكي أتمكن من تعليمك السلاح بشكل صحيح اذهب الآن وابحث عنها وستحصل على سلاحك الجديد"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch" instance=ExtResource("7_us6vm")]
+signal_name = "selected"
+linked_quest = ExtResource("8_5amom")
+
+[node name="DialogBranch2" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = " هل يمكنني الحصول على السلاح دون التفاحات"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogBranch2" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = " لا أعتقد أنني بحاجة اليه يمكنني الاعتماد على نفسي"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch3/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("3_gv2jf")
+text = "أفهم إذا غيرت رأيك في المستقبل سأكون هنا لأساعدك لكن تذكر السلاح سيكون مفيدًا في رحلتك"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch4" parent="." instance=ExtResource("1_lvcmc")]
+"نوع_التحقق" = 3
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_complete = true
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كانت المهمة مكتملة"
+
+[node name="QuestActivatedSwitch" parent="QuestActivatedSwitch4" instance=ExtResource("1_lvcmc")]
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="QuestActivatedSwitch" parent="QuestActivatedSwitch4/QuestActivatedSwitch" instance=ExtResource("1_lvcmc")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="QuestActivatedSwitch4/QuestActivatedSwitch/QuestActivatedSwitch" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch4/QuestActivatedSwitch/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "كلما أسرعت في إحضار التفاحات، كلما تعلمت مهارات أقوى. هيا، الوقت يمر!"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch2" parent="QuestActivatedSwitch4" instance=ExtResource("1_lvcmc")]
+"نوع_التحقق" = 2
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كان اللاعب في الخطوة: إعادتها إلى هولمس"
+
+[node name="DialogInteraction" parent="QuestActivatedSwitch4/QuestActivatedSwitch2" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch4/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "أحسنت! هذه هي تفاحات الحكمة. كما وعدت، سأعلمك استخدام سلاح البومرانغ لمهاجمة الأعداء من مسافة آمنة"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="QuestActivatedSwitch4/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "كيف أستخدمه؟"
+npc_info = ExtResource("9_x7t4y")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText3" type="Node" parent="QuestActivatedSwitch4/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "استخدامه بسيط للغاية. كل ما عليك فعله هو الضغط على [color=blue][b]X[/b][/color] أثناء المعركة، وسيتم رمي البومرانغ نحو العدو."
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText4" type="Node" parent="QuestActivatedSwitch4/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "لا تقلق، فإنه سيعود إليك بعد رميه. تذكر أن توقيت رميه هو سر النجاح"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch4/QuestActivatedSwitch2/DialogInteraction" instance=ExtResource("7_us6vm")]
+signal_name = "finished"
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+quest_complete = true
+
+[node name="Node" type="Node" parent="QuestActivatedSwitch4/QuestActivatedSwitch2/DialogInteraction/QuestAdvanceTrigger"]
+script = SubResource("GDScript_7u6vx")
+
+[node name="NPC_NERO" parent="." instance=ExtResource("10_us6vm")]
+position = Vector2(329, 172)
+npc_resource = ExtResource("11_5amom")
+
+[node name="NpcBehaviorPatrol" parent="NPC_NERO" instance=ExtResource("12_x7t4y")]
+
+[node name="PatrolLocation" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("13_7u6vx")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(67.059, -12)
+
+[node name="PatrolLocation2" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("13_7u6vx")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(66.059, 61)
+
+[node name="PatrolLocation3" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("13_7u6vx")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-16, 89)
+wait_time = 3.0
+
+[node name="PatrolLocation4" parent="NPC_NERO/NpcBehaviorPatrol" instance=ExtResource("13_7u6vx")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-76, -3)
+
+[node name="QuestActivatedSwitch" parent="NPC_NERO" instance=ExtResource("1_lvcmc")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("14_pnx30")
+quest_step = 1
+settings_summary = "تحديث المهمة:
+المهمة: بحبك ريميي
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC_NERO/QuestActivatedSwitch" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "Yo! Hero! Will you help retreive my
+magical flute from the dark dungeon?
+Please, pretty please?"
+npc_info = ExtResource("11_5amom")
+
+[node name="DialogChoice" type="Node" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("5_dpt5e")
+npc_info = ExtResource("11_5amom")
+
+[node name="DialogBranch" type="Node" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = "You can count on it!"
+npc_info = ExtResource("11_5amom")
+
+[node name="QuestAdvanceTrigger" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("7_us6vm")]
+position = Vector2(138, 18)
+signal_name = "selected"
+linked_quest = ExtResource("14_pnx30")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Magical Flute
+Step: 0 - N/A
+Complete: false"
+
+[node name="DialogText" type="Node" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("3_gv2jf")
+text = "Thank you dear hero! You are a true specimen!"
+npc_info = ExtResource("11_5amom")
+
+[node name="DialogText2" type="Node" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("3_gv2jf")
+text = "Oh, and be careful of the evil wizard who lurks in the dungeon!"
+npc_info = ExtResource("11_5amom")
+
+[node name="DialogBranch2" type="Node" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = "NO! You're crazy bananas!"
+npc_info = ExtResource("11_5amom")
+
+[node name="DialogText" type="Node" parent="NPC_NERO/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("3_gv2jf")
+text = "Geez! Some lousy hero you are...."
+npc_info = ExtResource("11_5amom")
+
+[node name="QuestActivatedSwitch3" type="Node2D" parent="NPC_NERO"]
+script = ExtResource("15_ot1uf")
+"نوع_التحقق" = 3
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("14_pnx30")
+quest_complete = true
+settings_summary = "تحديث المهمة:
+المهمة: درع العنكبوت المحرم
+التحقق مما إذا كانت المهمة مكتملة"
+
+[node name="QuestActivatedSwitch2" parent="NPC_NERO/QuestActivatedSwitch3" instance=ExtResource("1_lvcmc")]
+position = Vector2(0, -18)
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("14_pnx30")
+quest_step = 3
+settings_summary = "تحديث المهمة:
+المهمة: درع العنكبوت المحرم
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="QuestActivatedSwitch2" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2" instance=ExtResource("1_lvcmc")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("14_pnx30")
+quest_step = 3
+settings_summary = "تحديث المهمة:
+المهمة: درع العنكبوت المحرم
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "Thank you Hero! I lost my flute in the cave to the north."
+npc_info = ExtResource("11_5amom")
+
+[node name="QuestActivatedSwitch" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2" instance=ExtResource("1_lvcmc")]
+"نوع_التحقق" = 2
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("14_pnx30")
+quest_step = 3
+settings_summary = "تحديث المهمة:
+المهمة: درع العنكبوت المحرم
+التحقق مما إذا كان اللاعب في الخطوة: قتل العنكبوت"
+
+[node name="DialogInteraction2" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction2"]
+script = ExtResource("3_gv2jf")
+text = "Wow you found my flute!
+It's not much, but here's a reward!"
+npc_info = ExtResource("11_5amom")
+
+[node name="QuestAdvanceTrigger" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction2" instance=ExtResource("7_us6vm")]
+signal_name = "finished"
+linked_quest = ExtResource("14_pnx30")
+quest_step = 3
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+المهمة: اعد المفتاح
+الخطوة: 3 - ابحث عن حبك"
+
+[node name="Node" type="Node" parent="NPC_NERO/QuestActivatedSwitch3/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction2/QuestAdvanceTrigger"]
+script = SubResource("GDScript_n6wx4")
+
+[node name="QuestActivatedSwitch5" parent="." instance=ExtResource("1_lvcmc")]
+
+[node name="DialogInteraction" parent="QuestActivatedSwitch5" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch5/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "هل تريد أن أعطيك سلاحًا قد يساعدك في مهمتك"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="QuestActivatedSwitch5/DialogInteraction"]
+script = ExtResource("5_dpt5e")
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = " نعم أحتاج إلى السلاح كيف يمكنني الحصول عليه"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("3_gv2jf")
+text = "حسنًا هناك شرط واحد إذا جلبت لي عشر تفاحات سأعلمك كيفية استخدام السلاح وتفعيل حركاته الخاصة"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("5_dpt5e")
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = "موافق سأبحث عن التفاحات وأحضرها لك"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("3_gv2jf")
+text = "ممتاز التفاحات هي الطريقة الوحيدة لكي أتمكن من تعليمك السلاح بشكل صحيح اذهب الآن وابحث عنها وستحصل على سلاحك الجديد"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch" instance=ExtResource("7_us6vm")]
+signal_name = "selected"
+linked_quest = ExtResource("8_5amom")
+
+[node name="DialogBranch2" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = " هل يمكنني الحصول على السلاح دون التفاحات"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogBranch2" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice"]
+script = ExtResource("6_jb26f")
+text = " لا أعتقد أنني بحاجة اليه يمكنني الاعتماد على نفسي"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch5/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("3_gv2jf")
+text = "أفهم إذا غيرت رأيك في المستقبل سأكون هنا لأساعدك لكن تذكر السلاح سيكون مفيدًا في رحلتك"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch6" parent="." instance=ExtResource("1_lvcmc")]
+"نوع_التحقق" = 3
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_complete = true
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كانت المهمة مكتملة"
+
+[node name="QuestActivatedSwitch" parent="QuestActivatedSwitch6" instance=ExtResource("1_lvcmc")]
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="QuestActivatedSwitch" parent="QuestActivatedSwitch6/QuestActivatedSwitch" instance=ExtResource("1_lvcmc")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="QuestActivatedSwitch6/QuestActivatedSwitch/QuestActivatedSwitch" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch6/QuestActivatedSwitch/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "كلما أسرعت في إحضار التفاحات، كلما تعلمت مهارات أقوى. هيا، الوقت يمر!"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch2" parent="QuestActivatedSwitch6" instance=ExtResource("1_lvcmc")]
+"نوع_التحقق" = 2
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: تفاحات الحكمة
+التحقق مما إذا كان اللاعب في الخطوة: إعادتها إلى هولمس"
+
+[node name="DialogInteraction" parent="QuestActivatedSwitch6/QuestActivatedSwitch2" instance=ExtResource("2_4fsu0")]
+
+[node name="DialogText" type="Node" parent="QuestActivatedSwitch6/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "أحسنت! هذه هي تفاحات الحكمة. كما وعدت، سأعلمك استخدام سلاح البومرانغ لمهاجمة الأعداء من مسافة آمنة"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="QuestActivatedSwitch6/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "كيف أستخدمه؟"
+npc_info = ExtResource("9_x7t4y")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText3" type="Node" parent="QuestActivatedSwitch6/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "استخدامه بسيط للغاية. كل ما عليك فعله هو الضغط على [color=blue][b]X[/b][/color] أثناء المعركة، وسيتم رمي البومرانغ نحو العدو."
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText4" type="Node" parent="QuestActivatedSwitch6/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("3_gv2jf")
+text = "لا تقلق، فإنه سيعود إليك بعد رميه. تذكر أن توقيت رميه هو سر النجاح"
+npc_info = ExtResource("4_ki8tp")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch6/QuestActivatedSwitch2/DialogInteraction" instance=ExtResource("7_us6vm")]
+signal_name = "finished"
+linked_quest = ExtResource("8_5amom")
+quest_step = 2
+quest_complete = true
+
+[node name="Node" type="Node" parent="QuestActivatedSwitch6/QuestActivatedSwitch2/DialogInteraction/QuestAdvanceTrigger"]
+script = SubResource("GDScript_us6vm")

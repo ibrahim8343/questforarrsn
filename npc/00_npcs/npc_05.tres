@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://f5atjnpg8ga3"]
+
+[ext_resource type="Texture2D" uid="uid://dtoir2hf614xm" path="res://npc/sprites/portraits/npc_portrait_02.png" id="1_v4hft"]
+[ext_resource type="Script" uid="uid://vdkoe1ao4p7n" path="res://npc/scripts/npc_resource.gd" id="2_7lucv"]
+[ext_resource type="Texture2D" uid="uid://dhh0vwwt33q08" path="res://npc/sprites/npc_sprite_02.png" id="3_bxsgi"]
+
+[resource]
+script = ExtResource("2_7lucv")
+npc_name = "كارلوس"
+sprite = ExtResource("3_bxsgi")
+portrait = ExtResource("1_v4hft")
+dialog_audio_pitch = 1.3

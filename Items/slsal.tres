@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cf54f6mkds28e"]
+
+[ext_resource type="Script" uid="uid://bwq22ry1guuwt" path="res://Items/item_effects/item_effect.gd" id="1_4go6w"]
+[ext_resource type="Script" uid="uid://b405hrw22am82" path="res://Items/scripts/item_data.gd" id="2_incir"]
+[ext_resource type="Texture2D" uid="uid://5r8c5gbnsdno" path="res://Items/Transperent/tile339.png" id="3_4go6w"]
+
+[resource]
+script = ExtResource("2_incir")
+name = "سلسال فايلور"
+description = "سلسال قديم ذو وهج بنفسجي خافت، تتدلى منه أنياب مخلوقات مجهولة. كان ملكًا لفايلور، ويقال إنه يحمل طاقة سحرية غامضة"
+texture = ExtResource("3_4go6w")
+effects = Array[ExtResource("1_4go6w")]([])

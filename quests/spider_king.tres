@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://cpt62od4qwpsd"]
+
+[ext_resource type="Script" uid="uid://b73hijmin5dn2" path="res://quests/scripts/quest_reward_item.gd" id="1_78aid"]
+[ext_resource type="Resource" uid="uid://bi8j7ai8qulyp" path="res://Items/w_katana.tres" id="2_1ucyf"]
+[ext_resource type="Resource" uid="uid://bi48vid6jl4ua" path="res://Items/potion.tres" id="3_d0ph0"]
+[ext_resource type="Script" uid="uid://ej3xbi7xbvg1" path="res://quests/scripts/quest_resource.gd" id="4_j4o1k"]
+
+[sub_resource type="Resource" id="Resource_78aid"]
+script = ExtResource("1_78aid")
+item = ExtResource("2_1ucyf")
+quantity = 1
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[sub_resource type="Resource" id="Resource_dfnvc"]
+script = ExtResource("1_78aid")
+item = ExtResource("3_d0ph0")
+quantity = 3
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[resource]
+script = ExtResource("4_j4o1k")
+title = "ملك العناكب"
+description = "أنهيت العناكب الصغيرة، لكن التحدي الأكبر بانتظارك. ملك العناكب أقوى وأخطر، عليك قتله!"
+steps = Array[String](["ايجاد الملك", "اخد دم الملك", "اعطاء الدم لمارلو"])
+reward_xp = 40
+reward_items = Array[ExtResource("1_78aid")]([SubResource("Resource_78aid"), SubResource("Resource_dfnvc")])

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://cesr283x6exnu"]
+
+[ext_resource type="Script" uid="uid://b73hijmin5dn2" path="res://quests/scripts/quest_reward_item.gd" id="1_tpdow"]
+[ext_resource type="Resource" uid="uid://prvahwyi1iha" path="res://Items/apple.tres" id="2_xp0j7"]
+[ext_resource type="Script" uid="uid://ej3xbi7xbvg1" path="res://quests/scripts/quest_resource.gd" id="3_3p5mj"]
+[ext_resource type="Resource" uid="uid://d3oew63xq88d4" path="res://Items/a_ninja_suit.tres" id="3_xp0j7"]
+
+[sub_resource type="Resource" id="Resource_5i5be"]
+script = ExtResource("1_tpdow")
+item = ExtResource("2_xp0j7")
+quantity = 1
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[sub_resource type="Resource" id="Resource_xp0j7"]
+script = ExtResource("1_tpdow")
+item = ExtResource("3_xp0j7")
+quantity = 1
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[resource]
+script = ExtResource("3_3p5mj")
+title = "سلسال فايلور"
+description = "قبل مواجهة فايلور، ستحتاج إلى درع لوسيان لمقاومة سحره.  لكن عليك إحضار سلسال فايلور أولًا!\""
+steps = Array[String](["ايجاد الخنفسة", "الحصول على سلسال  فايلور", "إعادة السلسال الى راثيكس"])
+reward_xp = 25
+reward_items = Array[ExtResource("1_tpdow")]([SubResource("Resource_5i5be"), SubResource("Resource_xp0j7")])

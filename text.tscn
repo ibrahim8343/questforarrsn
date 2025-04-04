@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8q8awfsdfmt3"]
+
+[sub_resource type="GDScript" id="GDScript_aohfb"]
+resource_name = "text"
+script/source = "extends Control
+
+
+
+@onready var description_label: Label = $description_label
+@onready var title_label: Label = $TitleLabel
+"
+
+[node name="text" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_aohfb")
+
+[node name="description_label" type="Label" parent="."]
+modulate = Color(0.529067, 0.529067, 0.529067, 1)
+custom_minimum_size = Vector2(215, 10)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 45.0
+offset_right = 35301.0
+offset_bottom = 11845.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 100
+text = "هاييي مدري والله بس اوككك وييييييييييييييييييييييي ياييايايايايايايايidsfujhogghghadslildiyhygsبيسشبسشبسشبسشبسشبسويييييي"
+autowrap_mode = 2
+
+[node name="TitleLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(215, 10)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 9318.0
+offset_bottom = 2067.0
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 200
+text = "عنوان المهمة"
+autowrap_mode = 2

@@ -1,0 +1,280 @@
+[gd_scene load_steps=19 format=4 uid="uid://dsjp3jm1i8pq"]
+
+[ext_resource type="Script" uid="uid://d2eyblbal755o" path="res://Levels/scripts/level.gd" id="1_7vlhf"]
+[ext_resource type="AudioStream" uid="uid://bg0uwtt8v0qps" path="res://Levels/music/example_music_02.ogg" id="2_v8pxc"]
+[ext_resource type="PackedScene" uid="uid://bcskysr5no5a6" path="res://Tile Maps/dungeon_tiles_01.tscn" id="3_kmlgs"]
+[ext_resource type="PackedScene" uid="uid://d4nhxau2t5qvx" path="res://Props/torches/torch_dungeon.tscn" id="4_idp1n"]
+[ext_resource type="PackedScene" uid="uid://dpenv0euqqlkg" path="res://npc/npc_behavior_patrol.tscn" id="5_7nkii"]
+[ext_resource type="PackedScene" uid="uid://bi8crg3nv50qw" path="res://npc/npc.tscn" id="5_aemmq"]
+[ext_resource type="Resource" uid="uid://b5yo2vakxhrbk" path="res://npc/00_npcs/npc_07.tres" id="6_aemmq"]
+[ext_resource type="PackedScene" uid="uid://dyhn3j7qk4dqw" path="res://npc/patrol_location.tscn" id="6_g66ll"]
+[ext_resource type="PackedScene" uid="uid://cwby8egx8vwx2" path="res://quests/utility_nodes/quest_activated_switch.tscn" id="7_kwlpy"]
+[ext_resource type="PackedScene" uid="uid://b22o8rtjyby8c" path="res://Interactables/dialog/dialog_interaction.tscn" id="9_j4kej"]
+[ext_resource type="Script" uid="uid://7qrcj0xrfdwc" path="res://Interactables/dialog/scripts/dialog_text.gd" id="10_pgbvr"]
+[ext_resource type="Script" uid="uid://bhoxv42n8rdsq" path="res://Interactables/dialog/scripts/dialog_choice.gd" id="12_wi0li"]
+[ext_resource type="Script" uid="uid://c80ln4eok2stu" path="res://Interactables/dialog/scripts/dialog_branch.gd" id="13_i57uj"]
+[ext_resource type="PackedScene" uid="uid://b523kljtfiar7" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="14_716jf"]
+[ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://Levels/level_transition.tscn" id="16_yafbh"]
+[ext_resource type="Resource" uid="uid://cx38on0tnqdyi" path="res://quests/long_qquest.tres" id="17_v8pxc"]
+[ext_resource type="Resource" uid="uid://cesr283x6exnu" path="res://quests/ALMOT_QUS.tres" id="19_7nkii"]
+
+[sub_resource type="GDScript" id="GDScript_7nkii"]
+script/source = "extends Node
+
+@onready var quest_advance_trigger: QuestAdvanceTrigger = $\"..\"
+
+
+func _ready() -> void:
+	quest_advance_trigger.advanced.connect( quest_complete )
+
+
+func quest_complete() -> void:
+	PlayerManager.INVENTORY_DATA.use_item( load(\"res://Items/slsal.tres\") )
+	pass
+"
+
+[node name="RathixLevvel" type="Node2D"]
+script = ExtResource("1_7vlhf")
+music = ExtResource("2_v8pxc")
+
+[node name="Dungeon Tiles 01" parent="." instance=ExtResource("3_kmlgs")]
+tile_map_data = PackedByteArray("AAADAPv/AQAMAAAAAAADAPz/AQAMAAEAAAADAP3/AQAMAAIAAAADAP7/AQABAAIAAAADAAQAAQAGAAQAAAADAAUAAQABAAQAAAAEAPv/AQAEAAUAAAAEAPz/AQAEAAYAAAAEAP3/AQAEAAcAAAAEAP7/AQABAAAAAAAEAAQAAQAHAAQAAAAEAAUAAQADAAEAAAAFAPv/AQAHAAUAAAAFAPz/AQAHAAYAAAAFAP3/AQAHAAcAAAAFAP7/AQAAAAEAAAAFAAQAAQAIAAQAAAAFAAUAAQAAAAEAAAAGAPv/AQAMAAAAAAAGAPz/AQAMAAEAAAAGAP3/AQAMAAIAAAAGAP7/AQAAAAEAAAAGAP//AQACAAAAAAAGAAAAAQABAAAAAAAGAAEAAQADAAIAAAAGAAIAAQACAAEAAAAGAAMAAQABAAMAAAAGAAQAAQADAAIAAAAGAAUAAQACAAEAAAAHAP7/AQAAAAEAAAAHAP//AQABAAMAAAAHAAAAAQABAAIAAAAHAAEAAQAAAAEAAAAHAAIAAQABAAMAAAAHAAMAAQADAAAAAAAHAAQAAQADAAEAAAAHAAUAAQABAAQAAAAIAP7/AQABAAAAAAAIAP//AQABAAQAAAAIAAAAAQABAAIAAAAIAAEAAQABAAEAAAAIAAIAAQABAAQAAAAIAAMAAQAAAAEAAAAIAAQAAQABAAMAAAAIAAUAAQAAAAEAAAAJAP7/AQAAAAMAAAAJAP//AQABAAMAAAAJAAAAAQADAAIAAAAJAAEAAQADAAAAAAAJAAIAAQACAAEAAAAJAAMAAQAAAAQAAAAJAAQAAQABAAEAAAAJAAUAAQADAAEAAAAKAP7/AQABAAAAAAAKAAQAAQAEAAQAAAAKAAUAAQACAAEAAAALAPv/AQAHAAUAAAALAPz/AQAHAAYAAAALAP3/AQAHAAcAAAALAP7/AQADAAIAAAALAAUAAQABAAEAAAAMAPv/AQAMAAAAAAAMAPz/AQAMAAEAAAAMAP3/AQAMAAIAAAAMAP7/AQADAAAAAAAMAAUAAQAAAAAAAAALAAQAAQAFAAQAAAAMAAQAAQAGAAQAAAANAP7/AQAAAAAAAAANAAQAAQAHAAQAAAANAAUAAQAAAAIAAAAOAP7/AQAAAAAAAAAOAAQAAQAIAAQAAAAOAAUAAQAAAAQAAAANAPz/AQAMAAEAAAANAP3/AQAMAAIAAAAOAPz/AQAMAAEAAAAOAP3/AQAMAAIAAAANAPv/AQAMAAAAAAAOAPv/AQAMAAAAAAAHAPv/AQAMAAAAAAAHAPz/AQAMAAEAAAAHAP3/AQAMAAIAAAAIAPv/AQAMAAAAAAAIAPz/AQAMAAEAAAAIAP3/AQAMAAIAAAAJAPv/AQAMAAAAAAAJAPz/AQAMAAEAAAAJAP3/AQAMAAIAAAAKAPv/AQAEAAUAAAAKAPz/AQAEAAYAAAAKAP3/AQAEAAcAAAAPAPv/AQANAAAAAAAPAPz/AQANAAEAAAAPAP3/AQANAAIAAAAPAP7/AQANAAMAAAAPAP//AQANAAMAAAAPAAAAAQANAAMAAAAPAAEAAQANAAMAAAAPAAIAAQANAAMAAAAPAAMAAQANAAMAAAAPAAQAAQANAAMAAAAPAAUAAQANAAMAAAAQAPv/AQAOAAAAAAAQAPz/AQAOAAEAAAAQAP3/AQAOAAIAAAAQAP7/AQAOAAMAAAAQAP//AQAOAAMAAAAQAAAAAQAOAAMAAAAQAAEAAQAOAAMAAAAQAAIAAQAOAAMAAAAQAAMAAQAOAAMAAAAQAAQAAQAOAAMAAAAQAAUAAQAOAAMAAAARAPv/AQAPAAAAAAARAPz/AQAPAAEAAAARAP3/AQAPAAIAAAARAP7/AQAPAAMAAAARAP//AQAPAAQAAAARAAAAAQAPAAUAAAARAAEAAQAPAAMAAAARAAIAAQAPAAMAAAARAAMAAQAPAAEAAAARAAQAAQAPAAIAAAARAAUAAQAPAAMAAAAAAPv/AQALAAAAAAAAAPz/AQALAAEAAAAAAP3/AQALAAIAAAAAAP7/AQALAAMAAAAAAP//AQALAAMAAAAAAAAAAQALAAMAAAAAAAEAAQALAAMAAAAAAAIAAQALAAMAAAAAAAMAAQALAAMAAAAAAAQAAQALAAMAAAAAAAUAAQALAAMAAAD+//v/AQAJAAAAAAD+//z/AQAJAAEAAAD+//3/AQAJAAIAAAD+//7/AQAJAAMAAAD+////AQAJAAMAAAD+/wAAAQAJAAMAAAD+/wEAAQAJAAMAAAD+/wIAAQAJAAMAAAD+/wMAAQAJAAMAAAD+/wQAAQAJAAMAAAD+/wUAAQAJAAMAAAD///v/AQAKAAAAAAD///z/AQAKAAEAAAD///3/AQAKAAIAAAD///7/AQAKAAMAAAD/////AQAKAAMAAAD//wAAAQAKAAMAAAD//wEAAQAKAAMAAAD//wIAAQAKAAMAAAD//wMAAQAKAAMAAAD//wQAAQAKAAMAAAD//wUAAQAKAAMAAAABAPv/AQAMAAAAAAABAPz/AQAMAAEAAAABAP3/AQAMAAIAAAABAP7/AQAAAAAAAAABAAQAAQAEAAQAAAABAAUAAQAAAAIAAAACAPv/AQAMAAAAAAACAPz/AQAMAAEAAAACAP3/AQAMAAIAAAACAP7/AQAAAAAAAAACAAQAAQAFAAQAAAACAAUAAQAAAAQAAAD+/wgAAQAJAAQAAAD//wgAAQAKAAQAAAAAAAgAAQALAAQAAAABAAgAAQAMAAQAAAACAAgAAQAMAAQAAAADAAgAAQAMAAQAAAAEAAgAAQAAAAUAAAAFAAgAAQADAAUAAAAGAAgAAQAAAAUAAAAHAAgAAQABAAUAAAAIAAgAAQACAAUAAAAJAAgAAQADAAUAAAAKAAgAAQAAAAUAAAALAAgAAQADAAUAAAAMAAgAAQAMAAQAAAANAAgAAQAMAAQAAAAOAAgAAQAMAAQAAAAPAAgAAQANAAQAAAAQAAgAAQAOAAQAAAARAAgAAQAPAAQAAAD+/wkAAQAJAAUAAAD+/woAAQAJAAYAAAD//wkAAQAKAAUAAAD//woAAQAKAAYAAAAAAAkAAQALAAUAAAAAAAoAAQALAAYAAAABAAkAAQAMAAUAAAABAAoAAQAMAAYAAAACAAkAAQAMAAUAAAACAAoAAQAMAAYAAAADAAkAAQAMAAUAAAADAAoAAQAMAAYAAAAEAAkAAQAAAAYAAAAEAAoAAQAAAAcAAAAFAAkAAQADAAYAAAAFAAoAAQADAAcAAAAGAAkAAQAAAAYAAAAGAAoAAQAAAAcAAAAHAAkAAQABAAYAAAAHAAoAAQABAAcAAAAIAAkAAQACAAYAAAAIAAoAAQACAAcAAAAJAAkAAQADAAYAAAAJAAoAAQADAAcAAAAKAAkAAQAAAAYAAAAKAAoAAQAAAAcAAAALAAkAAQADAAYAAAALAAoAAQADAAcAAAAMAAkAAQAMAAUAAAAMAAoAAQAMAAYAAAANAAkAAQAMAAUAAAANAAoAAQAMAAYAAAAOAAkAAQAMAAUAAAAOAAoAAQAMAAYAAAAPAAkAAQANAAUAAAAPAAoAAQANAAYAAAAQAAkAAQAOAAUAAAAQAAoAAQAOAAYAAAARAAkAAQAPAAUAAAARAAoAAQAPAAYAAAD+/wYAAQAJAAMAAAD//wYAAQAKAAMAAAAAAAYAAQALAAMAAAD+/wcAAQAJAAMAAAD//wcAAQAKAAMAAAAAAAcAAQALAAMAAAAPAAYAAQANAAMAAAAQAAYAAQAOAAMAAAARAAYAAQAPAAMAAAAPAAcAAQANAAMAAAAQAAcAAQAOAAMAAAARAAcAAQAPAAMAAAABAAYAAQAAAAAAAAABAAcAAQAAAAEAAAACAAYAAQABAAAAAAACAAcAAQABAAEAAAADAAYAAQACAAAAAAADAAcAAQACAAEAAAAEAAYAAQAAAAAAAAAEAAcAAQAAAAEAAAAFAAYAAQABAAAAAAAFAAcAAQABAAEAAAAGAAYAAQACAAAAAAAGAAcAAQACAAEAAAAHAAYAAQADAAAAAAAHAAcAAQADAAEAAAAIAAYAAQAAAAAAAAAIAAcAAQAAAAEAAAAJAAYAAQABAAAAAAAJAAcAAQABAAEAAAAKAAYAAQACAAAAAAAKAAcAAQACAAEAAAALAAYAAQAAAAAAAAALAAcAAQAAAAEAAAAMAAYAAQABAAAAAAAMAAcAAQABAAEAAAANAAYAAQACAAAAAAANAAcAAQACAAEAAAAOAAYAAQADAAAAAAAOAAcAAQADAAEAAAABAAAAAQAEAAAAAAABAAEAAQAEAAEAAAABAAIAAQAEAAIAAAABAAMAAQAEAAMAAAACAAAAAQAFAAAAAAACAAEAAQAFAAEAAAACAAIAAQAFAAIAAAACAAMAAQAFAAMAAAADAAAAAQAGAAAAAAADAAEAAQAGAAEAAAADAAIAAQAGAAIAAAADAAMAAQAGAAMAAAAEAAAAAQAHAAAAAAAEAAEAAQAHAAEAAAAEAAIAAQAHAAIAAAAEAAMAAQAHAAMAAAAFAAAAAQAIAAAAAAAFAAEAAQAIAAEAAAAFAAIAAQAIAAIAAAAFAAMAAQAIAAMAAAAKAAAAAQAEAAAAAAAKAAEAAQAEAAEAAAAKAAIAAQAEAAIAAAAKAAMAAQAEAAMAAAALAAAAAQAFAAAAAAALAAEAAQAFAAEAAAALAAIAAQAFAAIAAAALAAMAAQAFAAMAAAAMAAAAAQAGAAAAAAAMAAEAAQAGAAEAAAAMAAIAAQAGAAIAAAAMAAMAAQAGAAMAAAANAAAAAQAHAAAAAAANAAEAAQAHAAEAAAANAAIAAQAHAAIAAAANAAMAAQAHAAMAAAAOAAAAAQAIAAAAAAAOAAEAAQAIAAEAAAAOAAIAAQAIAAIAAAAOAAMAAQAIAAMAAAABAP//AQAAAAEAAAACAP//AQAAAAEAAAADAP//AQABAAEAAAAEAP//AQACAAEAAAAFAP//AQADAAEAAAAKAP//AQAAAAEAAAALAP//AQAAAAEAAAAMAP//AQABAAEAAAANAP//AQACAAEAAAAOAP//AQADAAEAAAA=")
+
+[node name="TorchDungeon" parent="." instance=ExtResource("4_idp1n")]
+position = Vector2(48, -57)
+
+[node name="TorchDungeon2" parent="." instance=ExtResource("4_idp1n")]
+position = Vector2(464, -56)
+
+[node name="TorchDungeon3" parent="." instance=ExtResource("4_idp1n")]
+position = Vector2(49, 248)
+
+[node name="TorchDungeon4" parent="." instance=ExtResource("4_idp1n")]
+position = Vector2(464, 248)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.306, 0.36, 0.324, 1)
+energy = 0.8
+blend_mode = 2
+
+[node name="NPC" parent="." instance=ExtResource("5_aemmq")]
+position = Vector2(255, -43)
+npc_resource = ExtResource("6_aemmq")
+
+[node name="NpcBehaviorPatrol" parent="NPC" instance=ExtResource("5_7nkii")]
+
+[node name="PatrolLocation" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("6_g66ll")]
+modulate = Color(1, 0, 0, 1)
+wait_time = 1.0
+
+[node name="PatrolLocation2" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("6_g66ll")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(76, 0)
+
+[node name="PatrolLocation3" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("6_g66ll")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-76, -1)
+wait_time = 1.0
+
+[node name="QuestActivatedSwitch" parent="NPC" instance=ExtResource("7_kwlpy")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("19_7nkii")
+settings_summary = "تحديث المهمة:
+المهمة: سلسال فايلور
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch" instance=ExtResource("9_j4kej")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("10_pgbvr")
+text = "\"لم أرك هنا من قبل… من أنت؟"
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("12_wi0li")
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("13_i57uj")
+text = "أدريان أرسلني. أحتاج درع  قبل مواجهة فايلور."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("10_pgbvr")
+text = "أدريان أرسلك؟ إذن الأمر خطير حقًا… درع لوسيان ليس مجرد درع عادي، إنه مصنوع لمواجهة أقوى التهديدات، لكنني لا أستطيع منحه لك بسهولة."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("12_wi0li")
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_i57uj")
+text = "ماذا تريد مني؟"
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("10_pgbvr")
+text = "الدرع لا يُمنح بلا مقابل. هناك مخلوق خطير، أحد أتباع فايلور، يهاجم القوافل في الطريق الشرقي. اقضِ عليه، وأحضر لي سلسال فايلور، وسأمنحك الدرع."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("12_wi0li")
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_i57uj")
+text = "فهمت، سأقضي عليه وأعود."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("10_pgbvr")
+text = "انتظرك....."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice/DialogBranch" instance=ExtResource("14_716jf")]
+signal_name = "selected"
+linked_quest = ExtResource("19_7nkii")
+
+[node name="DialogBranch2" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_i57uj")
+text = "هل هذا اختبار؟ أنا لا أملك وقتًا لذلك!"
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice/DialogBranch2"]
+script = ExtResource("10_pgbvr")
+text = "ذا لم تكن مستعدًا لخوض هذا التحدي، فلن تكون مستعدًا لمواجهة فايلور. القرار لك."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogBranch2" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_i57uj")
+text = "لماذا لا تستطيع إعطائي إياه مباشرة؟"
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText2" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch2"]
+script = ExtResource("10_pgbvr")
+text = "الدرع لا يُمنح بلا مقابل. هناك مخلوق خطير، أحد أتباع فايلور، يهاجم القوافل في الطريق الشرقي. اقضِ عليه، وأحضر لي سلسال فايلور، وسأمنحك الدرع."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger2" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch2" instance=ExtResource("14_716jf")]
+signal_name = "selected"
+linked_quest = ExtResource("19_7nkii")
+
+[node name="DialogBranch2" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("13_i57uj")
+text = "ليس لدي وقت للحديث، أعطني الدرع فورًا!"
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("10_pgbvr")
+text = "إذا كنت تستهين بالخطر، فلن تصمد طويلًا أمام فايلور. عد إليّ عندما تدرك قيمة هذا الدرع."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch2" parent="NPC" instance=ExtResource("7_kwlpy")]
+"نوع_التحقق" = 3
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("19_7nkii")
+quest_complete = true
+settings_summary = "تحديث المهمة:
+المهمة: سلسال فايلور
+التحقق مما إذا كانت المهمة مكتملة"
+
+[node name="QuestActivatedSwitch" parent="NPC/QuestActivatedSwitch2" instance=ExtResource("7_kwlpy")]
+"نوع_التحقق" = 2
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("19_7nkii")
+quest_step = 3
+settings_summary = "تحديث المهمة:
+المهمة: سلسال فايلور
+التحقق مما إذا كان اللاعب في الخطوة: إعادة السلسال الى راثيكس"
+
+[node name="QuestActivatedSwitch" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch" instance=ExtResource("7_kwlpy")]
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+linked_quest = ExtResource("19_7nkii")
+settings_summary = "تحديث المهمة:
+المهمة: سلسال فايلور
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch/QuestActivatedSwitch" instance=ExtResource("9_j4kej")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("10_pgbvr")
+text = "لا أملك وقتًا للثرثرة، أحضر لي السلسال وأثبت أنك جدير بالدرع."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch2" parent="NPC/QuestActivatedSwitch2" instance=ExtResource("7_kwlpy")]
+"نوع_التحقق" = 2
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("19_7nkii")
+quest_step = 3
+settings_summary = "تحديث المهمة:
+المهمة: سلسال فايلور
+التحقق مما إذا كان اللاعب في الخطوة: إعادة السلسال الى راثيكس"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2" instance=ExtResource("9_j4kej")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("10_pgbvr")
+text = "لم أتوقع أن تعود بهذه السرعة... لكنك فعلتها."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("10_pgbvr")
+text = "السلسال بين يدي، وهذا يعني أنك أثبت جدارتك. كما وعدتك، هذا هو درع لوسيان. استخدمه بحكمة، فالمعارك القادمة لن تكون سهلة."
+npc_info = ExtResource("6_aemmq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction" instance=ExtResource("14_716jf")]
+signal_name = "finished"
+linked_quest = ExtResource("19_7nkii")
+quest_step = 3
+quest_complete = true
+
+[node name="Node" type="Node" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction/QuestAdvanceTrigger"]
+script = SubResource("GDScript_7nkii")
+
+[node name="LevelTransition" parent="." instance=ExtResource("16_yafbh")]
+position = Vector2(255, 274)
+level = "uid://blveafw30nv8o"
+target_transition_area = "LevelTransition2"
+side = 3
+
+[node name="QuestActivatedSwitch" parent="LevelTransition" instance=ExtResource("7_kwlpy")]
+"نوع_التحقق" = 1
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("17_v8pxc")
+quest_step = 1
+settings_summary = "تحديث المهمة:
+المهمة: مزمار فايلور
+التحقق مما إذا كان اللاعب قد أكمل الخطوة: ايجاد راثيكس"
+
+[node name="QuestAdvanceTrigger" parent="LevelTransition/QuestActivatedSwitch" instance=ExtResource("14_716jf")]
+linked_quest = ExtResource("17_v8pxc")
+quest_step = 1
+
+[connection signal="entered_from_here" from="LevelTransition" to="LevelTransition/QuestActivatedSwitch/QuestAdvanceTrigger" method="advance_quest"]

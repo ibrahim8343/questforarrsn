@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://2ttp6v5af3bt"]
+
+[ext_resource type="Script" uid="uid://b73hijmin5dn2" path="res://quests/scripts/quest_reward_item.gd" id="1_iptm2"]
+[ext_resource type="Resource" uid="uid://prvahwyi1iha" path="res://Items/apple.tres" id="2_54rfv"]
+[ext_resource type="Script" uid="uid://ej3xbi7xbvg1" path="res://quests/scripts/quest_resource.gd" id="3_3c1nn"]
+
+[sub_resource type="Resource" id="Resource_5i5be"]
+script = ExtResource("1_iptm2")
+item = ExtResource("2_54rfv")
+quantity = 1
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[resource]
+script = ExtResource("3_3c1nn")
+title = "تفاحة الحكمة"
+description = "تفاحة الحكمة هي مهمة حيث عليك جمع التفاحات من الغابة اوإحضارها إلى الـى هولمز لتعلم سلاح جديد واكتساب مهارات خاصة"
+steps = Array[String](["إيجاد مكان التفاحة", "اخذ التفاحة", "إعادتها إلى هولمس"])
+reward_xp = 15
+reward_items = Array[ExtResource("1_iptm2")]([SubResource("Resource_5i5be")])

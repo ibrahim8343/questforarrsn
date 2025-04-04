@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://h0qgxqawvjvj"]
+
+[ext_resource type="Script" uid="uid://bwq22ry1guuwt" path="res://Items/item_effects/item_effect.gd" id="1_shcu3"]
+[ext_resource type="AudioStream" uid="uid://bwnitghsawfi0" path="res://Items/item_effects/hp-up.wav" id="2_haqtj"]
+[ext_resource type="Script" uid="uid://lhem15j5m6we" path="res://Items/item_effects/item_effect_heal.gd" id="3_axtgf"]
+[ext_resource type="Script" uid="uid://b405hrw22am82" path="res://Items/scripts/item_data.gd" id="4_7maph"]
+[ext_resource type="Texture2D" uid="uid://o5fxutemu77v" path="res://Items/Transperent/Icon13.png" id="5_shcu3"]
+
+[sub_resource type="Resource" id="Resource_1v5wx"]
+script = ExtResource("3_axtgf")
+heal_amount = 3
+audio = ExtResource("2_haqtj")
+use_description = ""
+
+[resource]
+script = ExtResource("4_7maph")
+name = "مستخلص الاستقرار"
+description = "مشروب سحري يحتوي على جوهر القوة الداخلية. عند تناوله، يعزز استقرارك الجسدي والعقلي، مما يضيف لك قلبًا ونصف لتمكنك من الصمود في أقوى المعارك"
+texture = ExtResource("5_shcu3")
+effects = Array[ExtResource("1_shcu3")]([SubResource("Resource_1v5wx")])

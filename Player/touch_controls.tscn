@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://qln504dbulro"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_o3y0c"]
+[ext_resource type="Texture2D" uid="uid://4ckhane43433" path="res://بدون اسم1(2).png" id="2_00x4o"]
+[ext_resource type="Texture2D" uid="uid://sb3fckcgqdhq" path="res://Backpack.png" id="3_vw8s6"]
+[ext_resource type="Texture2D" uid="uid://ds3vr6ghrxeub" path="res://Player/Sprites/بدون اسم3.png" id="4_00x4o"]
+[ext_resource type="Texture2D" uid="uid://bad3ndls2pax2" path="res://Player/Sprites/بدون اسم4.png" id="5_r64q8"]
+[ext_resource type="Texture2D" uid="uid://50icxjf5a55w" path="res://بدون اسم5(1).png" id="6_r64q8"]
+[ext_resource type="Texture2D" uid="uid://bgoo6hwiuk1sy" path="res://بدون اسم9.png" id="6_u88lv"]
+[ext_resource type="Texture2D" uid="uid://s2chbsyr0wnf" path="res://بدون اسم8.png" id="7_u88lv"]
+
+[node name="TouchControls" type="CanvasLayer"]
+layer = 0
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("1_o3y0c")]
+z_index = -2
+offset_left = -41.0
+offset_top = -256.0
+offset_right = 259.0
+offset_bottom = 44.0
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
+
+[node name="BackPack" type="TouchScreenButton" parent="."]
+position = Vector2(7, 5)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_vw8s6")
+texture_pressed = ExtResource("3_vw8s6")
+action = "pause"
+
+[node name="attack" type="TouchScreenButton" parent="."]
+position = Vector2(1093, 494)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("2_00x4o")
+texture_pressed = ExtResource("2_00x4o")
+action = "attack"
+
+[node name="talking" type="TouchScreenButton" parent="."]
+position = Vector2(1169, 333)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("4_00x4o")
+texture_pressed = ExtResource("4_00x4o")
+action = "interact"
+
+[node name="open_door" type="TouchScreenButton" parent="."]
+position = Vector2(1135, 141)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("5_r64q8")
+texture_pressed = ExtResource("5_r64q8")
+action = "interact"
+
+[node name="open_chest" type="TouchScreenButton" parent="."]
+position = Vector2(1058, 363)
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("6_u88lv")
+texture_pressed = ExtResource("6_u88lv")
+action = "interact"
+
+[node name="lift_smth" type="TouchScreenButton" parent="."]
+position = Vector2(963, 445)
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("7_u88lv")
+texture_pressed = ExtResource("7_u88lv")
+action = "interact"
+
+[node name="boomareang" type="TouchScreenButton" parent="."]
+position = Vector2(913, 569)
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("6_r64q8")
+texture_pressed = ExtResource("6_r64q8")
+action = "ability"

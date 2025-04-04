@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://ddcxrr3nqmco3"]
+
+[ext_resource type="Script" uid="uid://b73hijmin5dn2" path="res://quests/scripts/quest_reward_item.gd" id="1_4u1th"]
+[ext_resource type="Resource" uid="uid://prvahwyi1iha" path="res://Items/apple.tres" id="2_g4qn3"]
+[ext_resource type="Script" uid="uid://ej3xbi7xbvg1" path="res://quests/scripts/quest_resource.gd" id="3_88qv1"]
+
+[sub_resource type="Resource" id="Resource_5i5be"]
+script = ExtResource("1_4u1th")
+item = ExtResource("2_g4qn3")
+quantity = 1
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[resource]
+script = ExtResource("3_88qv1")
+title = "ايجاد  كارلوس "
+description = "عليك إيجاد كارلوس... إنه في مكان ما، لكن أين؟ ابحث جيدًا، فقد يختبئ في مكان ما"
+steps = Array[String](["إيجاد مكان كارلوس", " العودة الى هولمز"])
+reward_xp = 15
+reward_items = Array[ExtResource("1_4u1th")]([SubResource("Resource_5i5be")])

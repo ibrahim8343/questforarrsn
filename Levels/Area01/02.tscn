@@ -1,0 +1,1071 @@
+[gd_scene load_steps=27 format=4 uid="uid://chcb2oelfl72f"]
+
+[ext_resource type="Script" uid="uid://d2eyblbal755o" path="res://Levels/scripts/level.gd" id="1_1ohot"]
+[ext_resource type="AudioStream" uid="uid://io7jxqk648xa" path="res://Levels/music/example_music_01.ogg" id="2_5s7x6"]
+[ext_resource type="PackedScene" uid="uid://cq32mohonpsw3" path="res://Tile Maps/grass-tiles-01.tscn" id="3_ukscd"]
+[ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://Levels/player_spawn.tscn" id="4_1fp1i"]
+[ext_resource type="Texture2D" uid="uid://d01qv0qqg01ba" path="res://Tile Maps/Sprites/Grass-01.png" id="5_a2klq"]
+[ext_resource type="PackedScene" uid="uid://d4igjv570x7c4" path="res://Props/Plants/plant.tscn" id="5_wa4h8"]
+[ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://Levels/level_transition.tscn" id="5_xj8mw"]
+[ext_resource type="PackedScene" uid="uid://bi8crg3nv50qw" path="res://npc/npc.tscn" id="7_62xuh"]
+[ext_resource type="PackedScene" uid="uid://b22o8rtjyby8c" path="res://Interactables/dialog/dialog_interaction.tscn" id="10_s1pmn"]
+[ext_resource type="PackedScene" uid="uid://dpenv0euqqlkg" path="res://npc/npc_behavior_patrol.tscn" id="11_q675y"]
+[ext_resource type="Script" uid="uid://7qrcj0xrfdwc" path="res://Interactables/dialog/scripts/dialog_text.gd" id="11_ufet7"]
+[ext_resource type="PackedScene" uid="uid://dyhn3j7qk4dqw" path="res://npc/patrol_location.tscn" id="12_sc27x"]
+[ext_resource type="Script" uid="uid://bhoxv42n8rdsq" path="res://Interactables/dialog/scripts/dialog_choice.gd" id="16_as0ht"]
+[ext_resource type="Script" uid="uid://c80ln4eok2stu" path="res://Interactables/dialog/scripts/dialog_branch.gd" id="17_lam8a"]
+[ext_resource type="PackedScene" uid="uid://cf0a8hxch6kfd" path="res://Props/pot/pot.tscn" id="18_gcr0t"]
+[ext_resource type="PackedScene" uid="uid://b523kljtfiar7" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="20_mgke4"]
+[ext_resource type="Resource" uid="uid://ccuhbbh3v0loi" path="res://quests/justry.tres" id="20_xflnv"]
+[ext_resource type="Resource" uid="uid://ddcxrr3nqmco3" path="res://quests/found_carlose.tres" id="22_wrnjp"]
+[ext_resource type="Resource" uid="uid://ddvgr3oiklaj7" path="res://npc/00_npcs/npc_04.tres" id="23_a2klq"]
+[ext_resource type="PackedScene" uid="uid://cwby8egx8vwx2" path="res://quests/utility_nodes/quest_activated_switch.tscn" id="23_vtf5b"]
+[ext_resource type="Resource" uid="uid://bped8nmqt0pgm" path="res://quests/short_quest.tres" id="24_0j6pc"]
+[ext_resource type="Resource" uid="uid://cdc3sykvmnn27" path="res://npc/00_npcs/00_hero.tres" id="25_abg8o"]
+[ext_resource type="Resource" uid="uid://brbme5spxrsnb" path="res://npc/00_npcs/npc_03.tres" id="27_abg8o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rucc"]
+texture = ExtResource("5_a2klq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/terrains_peering_bit/right_side = 0
+5:0/0/terrains_peering_bit/bottom_side = 0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 0
+6:0/0/terrains_peering_bit/right_side = 0
+6:0/0/terrains_peering_bit/bottom_side = 0
+6:0/0/terrains_peering_bit/left_side = 0
+7:0/0 = 0
+7:0/0/terrain_set = 0
+7:0/0/terrain = 0
+7:0/0/terrains_peering_bit/bottom_side = 0
+7:0/0/terrains_peering_bit/left_side = 0
+8:0/0 = 0
+8:0/0/terrain_set = 0
+8:0/0/terrain = 0
+8:0/0/terrains_peering_bit/right_side = 0
+8:0/0/terrains_peering_bit/bottom_side = 0
+8:0/0/terrains_peering_bit/top_side = 0
+9:0/0 = 0
+9:0/0/terrain_set = 0
+9:0/0/terrain = 0
+9:0/0/terrains_peering_bit/right_side = 0
+9:0/0/terrains_peering_bit/bottom_right_corner = 0
+9:0/0/terrains_peering_bit/bottom_side = 0
+9:0/0/terrains_peering_bit/left_side = 0
+10:0/0 = 0
+10:0/0/terrain_set = 0
+10:0/0/terrain = 0
+10:0/0/terrains_peering_bit/right_side = 0
+10:0/0/terrains_peering_bit/bottom_side = 0
+10:0/0/terrains_peering_bit/bottom_left_corner = 0
+10:0/0/terrains_peering_bit/left_side = 0
+11:0/0 = 0
+11:0/0/terrain_set = 0
+11:0/0/terrain = 0
+11:0/0/terrains_peering_bit/bottom_side = 0
+11:0/0/terrains_peering_bit/left_side = 0
+11:0/0/terrains_peering_bit/top_side = 0
+12:0/0 = 0
+12:0/0/terrain_set = 0
+12:0/0/terrain = 0
+12:0/0/terrains_peering_bit/right_side = 0
+12:0/0/terrains_peering_bit/bottom_right_corner = 0
+12:0/0/terrains_peering_bit/bottom_side = 0
+13:0/0 = 0
+13:0/0/terrain_set = 0
+13:0/0/terrain = 0
+13:0/0/terrains_peering_bit/right_side = 0
+13:0/0/terrains_peering_bit/bottom_right_corner = 0
+13:0/0/terrains_peering_bit/bottom_side = 0
+13:0/0/terrains_peering_bit/bottom_left_corner = 0
+13:0/0/terrains_peering_bit/left_side = 0
+13:0/0/terrains_peering_bit/top_side = 0
+14:0/0 = 0
+14:0/0/terrain_set = 0
+14:0/0/terrain = 0
+14:0/0/terrains_peering_bit/right_side = 0
+14:0/0/terrains_peering_bit/bottom_right_corner = 0
+14:0/0/terrains_peering_bit/bottom_side = 0
+14:0/0/terrains_peering_bit/bottom_left_corner = 0
+14:0/0/terrains_peering_bit/left_side = 0
+15:0/0 = 0
+15:0/0/terrain_set = 0
+15:0/0/terrain = 0
+15:0/0/terrains_peering_bit/bottom_side = 0
+15:0/0/terrains_peering_bit/bottom_left_corner = 0
+15:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+4:1/0/terrain = 0
+4:1/0/terrains_peering_bit/bottom_side = 0
+4:1/0/terrains_peering_bit/top_side = 0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+5:1/0/terrain = 0
+5:1/0/terrains_peering_bit/right_side = 0
+5:1/0/terrains_peering_bit/bottom_side = 0
+5:1/0/terrains_peering_bit/top_side = 0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+6:1/0/terrain = 0
+6:1/0/terrains_peering_bit/right_side = 0
+6:1/0/terrains_peering_bit/bottom_side = 0
+6:1/0/terrains_peering_bit/left_side = 0
+6:1/0/terrains_peering_bit/top_side = 0
+7:1/0 = 0
+7:1/0/terrain_set = 0
+7:1/0/terrain = 0
+7:1/0/terrains_peering_bit/bottom_side = 0
+7:1/0/terrains_peering_bit/left_side = 0
+7:1/0/terrains_peering_bit/top_side = 0
+8:1/0 = 0
+8:1/0/terrain_set = 0
+8:1/0/terrain = 0
+8:1/0/terrains_peering_bit/right_side = 0
+8:1/0/terrains_peering_bit/bottom_right_corner = 0
+8:1/0/terrains_peering_bit/bottom_side = 0
+8:1/0/terrains_peering_bit/top_side = 0
+9:1/0 = 0
+9:1/0/terrain_set = 0
+9:1/0/terrain = 0
+9:1/0/terrains_peering_bit/right_side = 0
+9:1/0/terrains_peering_bit/bottom_right_corner = 0
+9:1/0/terrains_peering_bit/bottom_side = 0
+9:1/0/terrains_peering_bit/bottom_left_corner = 0
+9:1/0/terrains_peering_bit/left_side = 0
+9:1/0/terrains_peering_bit/top_side = 0
+9:1/0/terrains_peering_bit/top_right_corner = 0
+10:1/0 = 0
+10:1/0/terrain_set = 0
+10:1/0/terrain = 0
+10:1/0/terrains_peering_bit/right_side = 0
+10:1/0/terrains_peering_bit/bottom_right_corner = 0
+10:1/0/terrains_peering_bit/bottom_side = 0
+10:1/0/terrains_peering_bit/bottom_left_corner = 0
+10:1/0/terrains_peering_bit/left_side = 0
+10:1/0/terrains_peering_bit/top_left_corner = 0
+10:1/0/terrains_peering_bit/top_side = 0
+11:1/0 = 0
+11:1/0/terrain_set = 0
+11:1/0/terrain = 0
+11:1/0/terrains_peering_bit/bottom_side = 0
+11:1/0/terrains_peering_bit/bottom_left_corner = 0
+11:1/0/terrains_peering_bit/left_side = 0
+11:1/0/terrains_peering_bit/top_side = 0
+12:1/0 = 0
+12:1/0/terrain_set = 0
+12:1/0/terrain = 0
+12:1/0/terrains_peering_bit/right_side = 0
+12:1/0/terrains_peering_bit/bottom_right_corner = 0
+12:1/0/terrains_peering_bit/bottom_side = 0
+12:1/0/terrains_peering_bit/top_side = 0
+12:1/0/terrains_peering_bit/top_right_corner = 0
+13:1/0 = 0
+13:1/0/terrain_set = 0
+13:1/0/terrain = 0
+13:1/0/terrains_peering_bit/right_side = 0
+13:1/0/terrains_peering_bit/bottom_right_corner = 0
+13:1/0/terrains_peering_bit/bottom_side = 0
+13:1/0/terrains_peering_bit/bottom_left_corner = 0
+13:1/0/terrains_peering_bit/left_side = 0
+13:1/0/terrains_peering_bit/top_side = 0
+13:1/0/terrains_peering_bit/top_right_corner = 0
+14:1/0 = 0
+15:1/0 = 0
+15:1/0/terrain_set = 0
+15:1/0/terrain = 0
+15:1/0/terrains_peering_bit/right_side = 0
+15:1/0/terrains_peering_bit/bottom_side = 0
+15:1/0/terrains_peering_bit/bottom_left_corner = 0
+15:1/0/terrains_peering_bit/left_side = 0
+15:1/0/terrains_peering_bit/top_left_corner = 0
+15:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/terrain = 0
+4:2/0/terrains_peering_bit/top_side = 0
+5:2/0 = 0
+5:2/0/terrain_set = 0
+5:2/0/terrain = 0
+5:2/0/terrains_peering_bit/right_side = 0
+5:2/0/terrains_peering_bit/top_side = 0
+6:2/0 = 0
+6:2/0/terrain_set = 0
+6:2/0/terrain = 0
+6:2/0/terrains_peering_bit/right_side = 0
+6:2/0/terrains_peering_bit/left_side = 0
+6:2/0/terrains_peering_bit/top_side = 0
+7:2/0 = 0
+7:2/0/terrain_set = 0
+7:2/0/terrain = 0
+7:2/0/terrains_peering_bit/left_side = 0
+7:2/0/terrains_peering_bit/top_side = 0
+8:2/0 = 0
+8:2/0/terrain_set = 0
+8:2/0/terrain = 0
+8:2/0/terrains_peering_bit/right_side = 0
+8:2/0/terrains_peering_bit/bottom_side = 0
+8:2/0/terrains_peering_bit/top_side = 0
+8:2/0/terrains_peering_bit/top_right_corner = 0
+9:2/0 = 0
+9:2/0/terrain_set = 0
+9:2/0/terrain = 0
+9:2/0/terrains_peering_bit/right_side = 0
+9:2/0/terrains_peering_bit/bottom_right_corner = 0
+9:2/0/terrains_peering_bit/bottom_side = 0
+9:2/0/terrains_peering_bit/left_side = 0
+9:2/0/terrains_peering_bit/top_left_corner = 0
+9:2/0/terrains_peering_bit/top_side = 0
+9:2/0/terrains_peering_bit/top_right_corner = 0
+10:2/0 = 0
+10:2/0/terrain_set = 0
+10:2/0/terrain = 0
+10:2/0/terrains_peering_bit/right_side = 0
+10:2/0/terrains_peering_bit/bottom_side = 0
+10:2/0/terrains_peering_bit/bottom_left_corner = 0
+10:2/0/terrains_peering_bit/left_side = 0
+10:2/0/terrains_peering_bit/top_left_corner = 0
+10:2/0/terrains_peering_bit/top_side = 0
+10:2/0/terrains_peering_bit/top_right_corner = 0
+11:2/0 = 0
+11:2/0/terrain_set = 0
+11:2/0/terrain = 0
+11:2/0/terrains_peering_bit/bottom_side = 0
+11:2/0/terrains_peering_bit/left_side = 0
+11:2/0/terrains_peering_bit/top_left_corner = 0
+11:2/0/terrains_peering_bit/top_side = 0
+12:2/0 = 0
+12:2/0/terrain_set = 0
+12:2/0/terrain = 0
+12:2/0/terrains_peering_bit/right_side = 0
+12:2/0/terrains_peering_bit/bottom_right_corner = 0
+12:2/0/terrains_peering_bit/bottom_side = 0
+12:2/0/terrains_peering_bit/top_side = 0
+12:2/0/terrains_peering_bit/top_right_corner = 0
+13:2/0 = 0
+13:2/0/terrain_set = 0
+13:2/0/terrain = 0
+13:2/0/terrains_peering_bit/right_side = 0
+13:2/0/terrains_peering_bit/bottom_right_corner = 0
+13:2/0/terrains_peering_bit/bottom_side = 0
+13:2/0/terrains_peering_bit/bottom_left_corner = 0
+13:2/0/terrains_peering_bit/left_side = 0
+13:2/0/terrains_peering_bit/top_left_corner = 0
+13:2/0/terrains_peering_bit/top_side = 0
+13:2/0/terrains_peering_bit/top_right_corner = 0
+14:2/0 = 0
+14:2/0/terrain_set = 0
+14:2/0/terrain = 0
+14:2/0/terrains_peering_bit/right_side = 0
+14:2/0/terrains_peering_bit/bottom_right_corner = 0
+14:2/0/terrains_peering_bit/bottom_side = 0
+14:2/0/terrains_peering_bit/left_side = 0
+14:2/0/terrains_peering_bit/top_left_corner = 0
+14:2/0/terrains_peering_bit/top_side = 0
+15:2/0 = 0
+15:2/0/terrain_set = 0
+15:2/0/terrain = 0
+15:2/0/terrains_peering_bit/bottom_side = 0
+15:2/0/terrains_peering_bit/bottom_left_corner = 0
+15:2/0/terrains_peering_bit/left_side = 0
+15:2/0/terrains_peering_bit/top_left_corner = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+4:3/0/terrain_set = 0
+4:3/0/terrain = 0
+5:3/0 = 0
+5:3/0/terrain_set = 0
+5:3/0/terrain = 0
+5:3/0/terrains_peering_bit/right_side = 0
+6:3/0 = 0
+6:3/0/terrain_set = 0
+6:3/0/terrain = 0
+6:3/0/terrains_peering_bit/right_side = 0
+6:3/0/terrains_peering_bit/left_side = 0
+7:3/0 = 0
+7:3/0/terrain_set = 0
+7:3/0/terrain = 0
+7:3/0/terrains_peering_bit/left_side = 0
+8:3/0 = 0
+8:3/0/terrain_set = 0
+8:3/0/terrain = 0
+8:3/0/terrains_peering_bit/right_side = 0
+8:3/0/terrains_peering_bit/bottom_right_corner = 0
+8:3/0/terrains_peering_bit/bottom_side = 0
+8:3/0/terrains_peering_bit/top_side = 0
+9:3/0 = 0
+9:3/0/terrain_set = 0
+9:3/0/terrain = 0
+9:3/0/terrains_peering_bit/right_side = 0
+9:3/0/terrains_peering_bit/left_side = 0
+9:3/0/terrains_peering_bit/top_side = 0
+9:3/0/terrains_peering_bit/top_right_corner = 0
+10:3/0 = 0
+10:3/0/terrain_set = 0
+10:3/0/terrain = 0
+10:3/0/terrains_peering_bit/right_side = 0
+10:3/0/terrains_peering_bit/left_side = 0
+10:3/0/terrains_peering_bit/top_left_corner = 0
+10:3/0/terrains_peering_bit/top_side = 0
+11:3/0 = 0
+11:3/0/terrain_set = 0
+11:3/0/terrain = 0
+11:3/0/terrains_peering_bit/bottom_side = 0
+11:3/0/terrains_peering_bit/left_side = 0
+11:3/0/terrains_peering_bit/top_side = 0
+12:3/0 = 0
+12:3/0/terrain_set = 0
+12:3/0/terrain = 0
+12:3/0/terrains_peering_bit/right_side = 0
+12:3/0/terrains_peering_bit/top_side = 0
+12:3/0/terrains_peering_bit/top_right_corner = 0
+13:3/0 = 0
+13:3/0/terrain_set = 0
+13:3/0/terrain = 0
+13:3/0/terrains_peering_bit/right_side = 0
+13:3/0/terrains_peering_bit/left_side = 0
+13:3/0/terrains_peering_bit/top_left_corner = 0
+13:3/0/terrains_peering_bit/top_side = 0
+13:3/0/terrains_peering_bit/top_right_corner = 0
+14:3/0 = 0
+14:3/0/terrain_set = 0
+14:3/0/terrain = 0
+14:3/0/terrains_peering_bit/right_side = 0
+14:3/0/terrains_peering_bit/left_side = 0
+14:3/0/terrains_peering_bit/top_left_corner = 0
+14:3/0/terrains_peering_bit/top_side = 0
+14:3/0/terrains_peering_bit/top_right_corner = 0
+15:3/0 = 0
+15:3/0/terrain_set = 0
+15:3/0/terrain = 0
+15:3/0/terrains_peering_bit/left_side = 0
+15:3/0/terrains_peering_bit/top_left_corner = 0
+15:3/0/terrains_peering_bit/top_side = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xflnv"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_2rucc")
+
+[sub_resource type="GDScript" id="GDScript_a2klq"]
+script/source = "extends Node
+
+@onready var quest_advance_trigger: QuestAdvanceTrigger = $\"..\"
+
+
+func _ready() -> void:
+	quest_advance_trigger.advanced.connect( quest_complete )
+
+
+func quest_complete() -> void:
+	PlayerManager.INVENTORY_DATA.use_item( load(\"res://Items/stone.tres\") )
+	pass
+"
+
+[node name="02" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1ohot")
+music = ExtResource("2_5s7x6")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_1fp1i")]
+position = Vector2(-169, 178)
+
+[node name="grass-tiles-01" parent="." instance=ExtResource("3_ukscd")]
+tile_map_data = PackedByteArray("AAD9/wEAAAABAAEAAAD9/wIAAAABAAEAAAD9/wMAAAABAAEAAAD9/wQAAAAAAAIAAAD9/wUAAAAGAAMAAAD9/wYAAAACAAEAAAD9/wcAAAAAAAIAAAD9/wgAAAANAAUAAAD9/wkAAAALAAQAAAD+/wEAAAAAAAIAAAD+/wIAAAACAAEAAAD+/wMAAAACAAEAAAD+/wQAAAABAAEAAAD+/wUAAAAGAAMAAAD+/wYAAAAAAAIAAAD+/wcAAAAAAAIAAAD+/wgAAAAAAAIAAAD+/wkAAAALAAQAAAD//wEAAAACAAAAAAD//wIAAAACAAEAAAD//wMAAAACAAEAAAD//wQAAAACAAAAAAD//wUAAAAGAAMAAAD//wYAAAAAAAAAAAD//wcAAAAAAAMAAAD//wgAAAAAAAAAAAD//wkAAAALAAQAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAQAAAAAAAAAAAAAAAUAAAAGAAMAAAAAAAYAAAABAAMAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAkAAAAMAAQAAAABAAEAAAACAAEAAAABAAIAAAABAAIAAAABAAMAAAABAAEAAAABAAQAAAAFAAAAAAABAAUAAAAHAAEAAAABAAYAAAAEAAIAAAABAAcAAAACAAEAAAABAAgAAAABAAIAAAABAAkAAAANAAQAAAACAAEAAAABAAMAAAACAAIAAAABAAEAAAACAAMAAAACAAEAAAACAAQAAAAGAAMAAAACAAUAAAACAAAAAAACAAYAAAABAAEAAAACAAcAAAAFAAMAAAACAAgAAAAAAAMAAAACAAkAAAALAAQAAAADAAEAAAACAAEAAAADAAIAAAAAAAIAAAADAAMAAAACAAEAAAADAAQAAAAGAAMAAAADAAUAAAADAAAAAAADAAYAAAADAAAAAAADAAcAAAAGAAMAAAADAAgAAAABAAEAAAADAAkAAAAMAAQAAAAEAAEAAAABAAEAAAAEAAIAAAABAAIAAAAEAAMAAAABAAEAAAAEAAQAAAAGAAMAAAAEAAUAAAAAAAAAAAAEAAYAAAAEAAAAAAAEAAcAAAAHAAIAAAAEAAgAAAAAAAEAAAAEAAkAAAANAAQAAAAFAAEAAAABAAAAAAAFAAIAAAABAAEAAAAFAAMAAAAAAAIAAAAFAAQAAAAGAAMAAAAFAAUAAAABAAAAAAAFAAYAAAABAAAAAAAFAAcAAAABAAAAAAAFAAgAAAAAAAEAAAAFAAkAAAALAAQAAAAGAAEAAAAMAAMAAAAGAAIAAAACAAAAAAAGAAMAAAACAAAAAAAGAAQAAAAGAAMAAAAGAAUAAAACAAAAAAAGAAYAAAACAAAAAAAGAAcAAAACAAEAAAAGAAgAAAAAAAIAAAAGAAkAAAAMAAQAAAAHAAEAAAALAAIAAAAHAAIAAAAEAAEAAAAHAAMAAAAIAAEAAAAHAAQAAAAJAAMAAAAHAAUAAAADAAAAAAAHAAYAAAACAAEAAAAHAAcAAAABAAEAAAAHAAgAAAAAAAIAAAAHAAkAAAANAAQAAAAIAAIAAAAAAAAAAAAIAAMAAAAPAAAAAAAIAAQAAAAOAAIAAAAIAAUAAAAMAAMAAAAIAAYAAAAAAAAAAAAIAAcAAAABAAIAAAAIAAgAAAAAAAAAAAAIAAkAAAALAAQAAAAJAAQAAAAKAAAAAAAJAAUAAAALAAIAAAAJAAYAAAAFAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAABAAAAAAAJAAkAAAAMAAQAAAAKAAQAAAAHAAMAAAAKAAUAAAACAAAAAAAKAAYAAAAGAAMAAAAKAAcAAAAAAAIAAAAKAAgAAAACAAAAAAAKAAkAAAANAAQAAAALAAQAAAADAAAAAAALAAUAAAADAAAAAAALAAYAAAAGAAMAAAALAAcAAAABAAEAAAALAAgAAAABAAEAAAALAAkAAAALAAQAAAAMAAQAAAAIAAIAAAAMAAUAAAAEAAEAAAAMAAYAAAAHAAIAAAAMAAcAAAAAAAAAAAAMAAgAAAABAAIAAAAMAAkAAAAMAAQAAAANAAQAAAAPAAMAAAANAAUAAAABAAAAAAANAAYAAAABAAAAAAANAAcAAAABAAAAAAANAAgAAAACAAEAAAAIAAEAAAAAAAAAAAAJAAEAAAABAAAAAAAJAAIAAAABAAAAAAAJAAMAAAABAAAAAAAKAAEAAAACAAEAAAAKAAIAAAAFAAMAAAAKAAMAAAACAAAAAAALAAEAAAABAAEAAAALAAIAAAAGAAMAAAALAAMAAAADAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAHAAAAAAAMAAMAAAAIAAEAAAANAAEAAAACAAEAAAANAAIAAAABAAAAAAANAAMAAAAPAAAAAAD8/wYAAAACAAEAAAD8/wUAAAAGAAMAAAD8/wEAAAAAAAIAAAD8/wIAAAACAAEAAAD8/wMAAAACAAEAAAD8/wQAAAACAAEAAAD8/wcAAAACAAEAAAD8/wgAAAAAAAIAAAD8/wkAAAALAAQAAAD7/wkAAAALAAQAAAD7/wgAAAACAAEAAAD7/wcAAAACAAEAAAD7/wYAAAACAAEAAAD7/wUAAAAGAAMAAAD7/wQAAAACAAEAAAD7/wMAAAAAAAIAAAD7/wIAAAAAAAIAAAD7/wEAAAAAAAIAAAD5/wIAAAAOAAUAAAD6/wIAAAAAAAIAAAD6/wMAAAAAAAIAAAD6/wQAAAABAAEAAAD6/wUAAAAFAAMAAAD6/wYAAAAAAAIAAAD6/wcAAAAAAAIAAAD6/wgAAAAAAAIAAAD6/wkAAAALAAQAAAD5/wkAAAAKAAQAAAD5/wgAAAAOAAcAAAD5/wcAAAAOAAYAAAD5/wYAAAAOAAUAAAD5/wUAAAAOAAUAAAD5/wQAAAAOAAUAAAD5/wMAAAAOAAUAAAD6/wEAAAAAAAIAAAD5//7/AAACAAYAAAD6//7/AAADAAYAAAD7//7/AAAEAAYAAAD8//7/AAAEAAYAAAD9//7/AAACAAYAAAD+//7/AAADAAYAAAD///7/AAAEAAYAAAAAAP7/AAAEAAYAAAABAP7/AAACAAYAAAACAP7/AAADAAYAAAADAP7/AAAEAAYAAAAEAP7/AAANAAcAAAAFAP7/AAAOAAcAAAAGAP7/AAAMAAEAAAAHAP7/AAAPAAIAAAAIAP7/AAAKAAcAAAAJAP7/AAALAAcAAAAKAP7/AAACAAYAAAALAP7/AAADAAYAAAAMAP7/AAAEAAYAAAANAP7/AAACAAYAAAAOAP7/AAADAAYAAAAPAP7/AAAEAAYAAAD5//z/AAACAAQAAAD5//3/AAACAAUAAAD6//z/AAADAAQAAAD6//3/AAADAAUAAAD7//z/AAAEAAQAAAD7//3/AAAEAAUAAAD8//z/AAAEAAQAAAD8//3/AAAEAAUAAAD9//z/AAACAAQAAAD9//3/AAACAAUAAAD+//z/AAADAAQAAAD+//3/AAADAAUAAAD///z/AAAEAAQAAAD///3/AAAEAAUAAAAAAPz/AAAEAAQAAAAAAP3/AAAEAAUAAAABAPz/AAACAAQAAAABAP3/AAACAAUAAAACAPz/AAADAAQAAAACAP3/AAADAAUAAAADAPz/AAAEAAQAAAADAP3/AAAEAAUAAAAEAPz/AAACAAQAAAAEAP3/AAADAAUAAAAFAPz/AAAOAAYAAAAFAP3/AAAJAAcAAAAGAPz/AAAMAAEAAAAGAP3/AAAMAAEAAAAHAPz/AAAPAAIAAAAHAP3/AAAPAAIAAAAIAPz/AAAKAAYAAAAIAP3/AAAJAAYAAAAJAPz/AAAEAAQAAAAJAP3/AAAEAAUAAAAKAPz/AAACAAQAAAAKAP3/AAACAAUAAAALAPz/AAADAAQAAAALAP3/AAADAAUAAAAMAPz/AAAEAAQAAAAMAP3/AAAEAAUAAAANAPz/AAACAAQAAAANAP3/AAACAAUAAAAOAPz/AAADAAQAAAAOAP3/AAADAAUAAAAPAPz/AAAEAAQAAAAPAP3/AAAEAAUAAAD6////AAABAAEAAAD6/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD8/wAAAAABAAEAAAD8////AAAAAAAAAAD7////AAAAAAAAAAD9////AAACAAEAAAD+////AAACAAEAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAABAAEAAAABAAAAAAAAAAAAAAACAAAAAAACAAEAAAADAAAAAAACAAEAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP//AAABAAEAAAAGAP//AAAMAAEAAAAHAP//AAAPAAIAAAAIAP//AAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAABAAEAAAD//wAAAAACAAEAAAABAP//AAACAAEAAAACAP//AAAAAAAAAAADAP//AAACAAEAAAAEAP//AAACAAEAAAAGAAAAAAAMAAEAAAAHAAAAAAAPAAIAAAAIAAAAAAAAAAAAAAAJAP//AAACAAEAAAAJAAAAAAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAACAAEAAAALAP//AAAAAAAAAAALAAAAAAABAAEAAAAMAP//AAAAAAAAAAAMAAAAAAABAAEAAAANAP//AAAAAAAAAAANAAAAAAABAAEAAAD5/wEAAAAOAAUAAAD5/wAAAAAOAAUAAAD5////AAAOAAQAAAAQAPz/AAACAAQAAAAQAP3/AAACAAUAAAAQAP7/AAACAAYAAAARAPz/AAADAAQAAAARAP3/AAADAAUAAAARAP7/AAADAAYAAAASAPz/AAAEAAQAAAASAP3/AAAEAAUAAAASAP7/AAAEAAYAAAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAABAAEAAAARAAIAAAAAAAEAAAARAAMAAAAAAAIAAAARAAQAAAAKAAQAAAARAAUAAAAKAAUAAAARAAYAAAAKAAUAAAARAAcAAAAKAAUAAAARAAgAAAAKAAUAAAARAAkAAAAKAAUAAAASAP//AAAKAAQAAAASAAAAAAAKAAUAAAASAAEAAAAKAAUAAAASAAIAAAAKAAYAAAASAAMAAAAKAAcAAAASAAQAAAALAAQAAAASAAUAAAALAAUAAAASAAYAAAALAAUAAAASAAcAAAALAAUAAAASAAgAAAALAAUAAAASAAkAAAALAAUAAAANAAkAAAALAAQAAAAOAAkAAAAMAAQAAAAPAAkAAAAMAAQAAAAQAAkAAAAOAAQAAAAOAP//AAAAAAAAAAAOAAAAAAABAAEAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAABAAEAAAAOAAQAAAABAAEAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAACAAEAAAAPAAIAAAACAAEAAAAPAAMAAAAAAAAAAAAPAAQAAAACAAEAAAAPAAUAAAABAAEAAAAPAAYAAAABAAEAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAACAAEAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAABAAEAAAAQAAQAAAABAAEAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAA=")
+
+[node name="QuestActivatedSwitch" parent="." instance=ExtResource("23_vtf5b")]
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("24_0j6pc")
+settings_summary = "تحديث المهمة:
+المهمة: حجر هولمز
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="QuestActivatedSwitch"]
+z_index = -1
+tile_map_data = PackedByteArray("AAAFAPz/AAACAAQAAAAFAP3/AAACAAUAAAAFAP7/AAACAAYAAAAGAPz/AAACAAQAAAAGAP3/AAACAAUAAAAGAP7/AAACAAYAAAAHAPz/AAADAAQAAAAHAP3/AAADAAUAAAAHAP7/AAADAAYAAAAIAPz/AAAEAAQAAAAIAP3/AAAEAAUAAAAIAP7/AAAEAAYAAAD6/wUAAAAFAAMAAAD7/wUAAAAGAAMAAAD8/wUAAAAGAAMAAAD9/wUAAAAGAAMAAAD+/wUAAAAGAAMAAAD//wUAAAAGAAMAAAAAAAUAAAAGAAMAAAABAAUAAAAHAAEAAAABAAYAAAAEAAIAAAABAAQAAAAFAAAAAAACAAQAAAAGAAMAAAADAAQAAAAGAAMAAAAEAAQAAAAGAAMAAAAFAAQAAAAGAAMAAAAGAAQAAAAGAAMAAAAHAAQAAAAJAAMAAAAHAAMAAAAIAAEAAAAHAAIAAAAEAAEAAAAHAAEAAAALAAIAAAAGAAEAAAAMAAMAAAAGAAAAAAAMAAEAAAAHAAAAAAAPAAEAAAAHAP//AAAPAAAAAAAGAP//AAAMAAAAAAAIAAMAAAAPAAAAAAAIAAQAAAAOAAIAAAAIAAUAAAAMAAMAAAAJAAUAAAALAAIAAAAJAAYAAAAFAAIAAAAKAAYAAAAGAAMAAAALAAYAAAAGAAMAAAAMAAYAAAAHAAIAAAAMAAUAAAAEAAEAAAAMAAQAAAAIAAIAAAANAAQAAAAPAAMAAAANAAMAAAAPAAAAAAAMAAMAAAAIAAEAAAAMAAIAAAAHAAAAAAALAAIAAAAGAAMAAAAKAAIAAAAFAAMAAAAJAAQAAAAKAAAAAAAKAAQAAAAHAAMAAAA=")
+tile_set = SubResource("TileSet_xflnv")
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_xj8mw")]
+position = Vector2(224, -128)
+level = "res://Levels/Area01/01.tscn"
+side = 2
+
+[node name="Pot" parent="." instance=ExtResource("18_gcr0t")]
+position = Vector2(144, 210)
+
+[node name="Pot3" parent="." instance=ExtResource("18_gcr0t")]
+position = Vector2(169, 210)
+
+[node name="Pot4" parent="." instance=ExtResource("18_gcr0t")]
+position = Vector2(137, 91)
+
+[node name="Pot2" parent="." instance=ExtResource("18_gcr0t")]
+position = Vector2(121, 210)
+
+[node name="NPC-TR" parent="." instance=ExtResource("7_62xuh")]
+position = Vector2(-119.001, 143)
+scale = Vector2(1, 1.00001)
+npc_resource = ExtResource("27_abg8o")
+
+[node name="NpcBehaviorPatrol" parent="NPC-TR" instance=ExtResource("11_q675y")]
+
+[node name="PatrolLocation" parent="NPC-TR/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(1, 0, 0, 1)
+
+[node name="PatrolLocation2" parent="NPC-TR/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(83, 0)
+
+[node name="PatrolLocation3" parent="NPC-TR/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-1, 100)
+
+[node name="PatrolLocation4" parent="NPC-TR/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(0, -1)
+wait_time = 1.0
+
+[node name="PatrolLocation5" parent="NPC-TR/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(-2, 101)
+
+[node name="PatrolLocation6" parent="NPC-TR/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(110, 99)
+
+[node name="PatrolLocation7" parent="NPC-TR/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(106, -3)
+
+[node name="DialogInteraction" parent="NPC-TR" instance=ExtResource("10_s1pmn")]
+
+[node name="DialogText" type="Node" parent="NPC-TR/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "أهلاً أيها المسافر! لم أرَ وجهًا جديدًا هنا منذ مدة... يبدو أن حظك قد قادك إلى قريتنا المجهولة."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC-TR/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = " ماذا أتى بك إلى هنا؟"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="NPC-TR/DialogInteraction"]
+script = ExtResource("16_as0ht")
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = "أنا فقط أستكشف المكان"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "إذن، يبدو أنك هنا فقط لاستكشاف هذا المكان، أليس كذلك؟"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText6" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = " رغم أنني أرى في عينيك رغبة في اكتشاف أكثر من مجرد هذه القرية الصغيرة..."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = " ولكن، تذكر، لا شيء هنا كما يبدو.
+"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText3" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "عندما تكون مستعدًا للمغادرة، يمكنك استخدام سلاحك الأساسي بالضغط على زر [b][color=red]المسافة[/color][/b]. "
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText4" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "وأثناء استكشافك لا تنسَ أن تتفقد [color=red]حقيبتك[/color] باستخدام زر [color=blue][b]ESC[/b][/color]، لتتمكن من الوصول إلى الأدوات والعناصر التي قد تحتاجها في رحلتك."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText5" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "وأنت في طريقك، إذا كنت بحاجة للمساعدة أو واجهت أي مشكلة، عد الى هنا مجددًا. الرحلة ليست سهلة، وسيكون عليك دائمًا أن تكون مستعدًا لما قد يصادفك."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText7" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "لا تنسَ حفظ تقدمك! إن متَّ، فلن ترغب في العودة إلى البداية. افتح الحقيبة، ثم توجه إلى الإعدادات، واضغط على حفظ."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogBranch2" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = "أبحث عن شخص"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "تبحث عن شخص؟ هذا يبدو مثيرًا! هل تبحث عن شخص معين؟ ربما أستطيع مساعدتك في إيجاد ما تبحث عنه."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("16_as0ht")
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="فاييلور" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = "أنا أبحث عن شخص يدعى  ميراك"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/فاييلور"]
+script = ExtResource("11_ufet7")
+text = "[shake][color=orangered]ميراك؟![/color][/shake] هذا الاسم... لا يجب أن يُذكر هنا! لا أعتقد أنك تدرك تمامًا ما تعنيه هذه الكلمة في هذا المكان... ولكن إذا كنت مصرًا على البحث، 
+
+
+
+"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText5" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/فاييلور"]
+script = ExtResource("11_ufet7")
+text = "عليك أن تكون مستعدًا لكل شيء."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/فاييلور"]
+script = ExtResource("11_ufet7")
+text = "إذا كنت بحاجة للمزيد من المساعدة، فلا تتردد في العودة. لكن كن حذار، ميراك ليس مجرد اسم عابر في هذه الأرض."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText3" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/فاييلور"]
+script = ExtResource("11_ufet7")
+text = "وبينما تتابع رحلتك، تذكر أنك دائمًا بحاجة لمراجعة [color=red]حقيبتك[/color] باستخدام زر [color=blue][b]ESC[/b][/color]، فقد تجد بعض الأدوات التي قد تساعدك في مواجهة ما سيأتي."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText4" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/فاييلور"]
+script = ExtResource("11_ufet7")
+text = "عندما تكون مستعدًا للمغادرة، يمكنك استخدام سلاحك الأساسي بالضغط على زر [b][color=red]المسافة[/color][/b]. "
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText7" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/فاييلور"]
+script = ExtResource("11_ufet7")
+text = "لا تنسَ حفظ تقدمك! إن متَّ، فلن ترغب في العودة إلى البداية. افتح الحقيبة، ثم توجه إلى الإعدادات، واضغط على حفظ."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogBranch2" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = " لا أعلم اسمه، لكنني بحاجة للعثور عليه"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "هممم، هذا غريب. قد يكون هناك شخص يستطيع مساعدتك، ولكن عليك أن تسأل [b][color=darkred]ادريان[/color][/b]، قد يكون لديه بعض المعلومات التي تبحث عنها"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "إذا احتجت لأي مساعدة إضافية، عد هنا. أما الآن، فاجعل رحلتك مليئة بالاكتشافات.
+"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText5" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "وبينما تتابع رحلتك، تذكر أنك دائمًا بحاجة لمراجعة [color=red]حقيبتك[/color] باستخدام زر [color=blue][b]ESC[/b][/color]، فقد تجد بعض الأدوات التي قد تساعدك في مواجهة ما سيأتي."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText6" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "عندما تكون مستعدًا للمغادرة، يمكنك استخدام سلاحك الأساسي بالضغط على زر [b][color=red]المسافة[/color][/b]. "
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText7" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch2/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "لا تنسَ حفظ تقدمك! إن متَّ، فلن ترغب في العودة إلى البداية. افتح الحقيبة، ثم توجه إلى الإعدادات، واضغط على حفظ."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogBranch3" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = " لا شيء يخصك!"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("11_ufet7")
+text = "هاه! يبدو أنك لست هنا للتحدث. حسنًا، هذا شأنك... ولكن تذكر، نحن في هذا المكان لا نحب الغرباء الذين يثيرون الفوضى."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("11_ufet7")
+text = " فقط احرص على عدم إحداث مشاكل."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText4" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("11_ufet7")
+text = "وهذا مساعدة على رغم انك لاتستحق يمكنك استخدام سلاحك الأساسي بالضغط على زر [b][color=red]المسافة[/color][/b]. وأثناء استكشافك،"
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText3" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("11_ufet7")
+text = " لا تنسَ أن تتفقد [color=red]حقيبتك[/color] باستخدام زر [color=blue][b]ESC[/b][/color]، لتتمكن من الوصول إلى الأدوات والعناصر التي قد تحتاجها في رحلتك."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText7" type="Node" parent="NPC-TR/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("11_ufet7")
+text = "وا لا تنسَ حفظ تقدمك! إن متَّ، فلن ترغب في العودة إلى البداية. افتح الحقيبة، ثم توجه إلى الإعدادات، واضغط على حفظ."
+npc_info = ExtResource("27_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="Plant" parent="." instance=ExtResource("5_wa4h8")]
+position = Vector2(-150, 3)
+
+[node name="Plant2" parent="." instance=ExtResource("5_wa4h8")]
+position = Vector2(-65, 3)
+
+[node name="Plant3" parent="." instance=ExtResource("5_wa4h8")]
+position = Vector2(-108, 48)
+
+[node name="Plant4" parent="." instance=ExtResource("5_wa4h8")]
+position = Vector2(23, 24)
+
+[node name="Plant5" parent="." instance=ExtResource("5_wa4h8")]
+position = Vector2(-27, 41)
+
+[node name="Plant6" parent="." instance=ExtResource("5_wa4h8")]
+position = Vector2(420, 4)
+
+[node name="NPC" parent="." instance=ExtResource("7_62xuh")]
+position = Vector2(498, 84)
+scale = Vector2(1, 1.00001)
+npc_resource = ExtResource("23_a2klq")
+
+[node name="NpcBehaviorPatrol" parent="NPC" instance=ExtResource("11_q675y")]
+
+[node name="PatrolLocation" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -7)
+
+[node name="PatrolLocation2" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-19, 132)
+
+[node name="PatrolLocation3" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-77, -12)
+
+[node name="PatrolLocation4" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-91, 144)
+
+[node name="PatrolLocation5" parent="NPC/NpcBehaviorPatrol" instance=ExtResource("12_sc27x")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(32, 146)
+
+[node name="QuestActivatedSwitch" parent="NPC" instance=ExtResource("23_vtf5b")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("20_xflnv")
+settings_summary = "تحديث المهمة:
+المهمة: للتجربة
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch" instance=ExtResource("10_s1pmn")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "مرحبًا، أيها المغامر. هناك شيء قديم مفقود في هذه الغابة. حجر قديم، لكن الوحوش هنا تحرسه بقوة. "
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText4" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "إذا كنت ترغب في المضي قدمًا في رحلتك، عليك استعادة هذا الحجر"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "ماذا يجب علي أن أفعل؟"
+npc_info = ExtResource("25_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText3" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "عليك قتل الوحوش التي تحرس الحجر واستعادته. حينما تحصل عليه، احضره لي"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText5" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "الحجر مخفي بين الوحوش التي تحرسه. اقتلهم جميعًا وستجده مع أحدهم. استعد، الطريق ليس سهلاً"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("16_as0ht")
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = "سأذهب الآن"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="QuestAdvanceTrigger2" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("20_mgke4")]
+position = Vector2(160, 21)
+signal_name = "selected"
+linked_quest = ExtResource("24_0j6pc")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Magical Flute
+Step: 0 - N/A
+Complete: false"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "حسنًا، أتمنى لك النجاح في مهمتك. تذكر، الوحوش لن تكون سهلة، لكنني واثق أنك ستكون قادرًا على تجاوزها. حظًا موفقًا!"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogBranch2" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = "لا أظن أنني مستعدًا بعد"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "لا بأس، خذ وقتك. استعد جيدًا، فهذا سيكون تحديًا صعبًا. عندما تشعر أنك جاهز، عد إليّ. سأكون هنا إذا كنت بحاجة إلى نصيحة"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch2" parent="NPC" instance=ExtResource("23_vtf5b")]
+"نوع_التحقق" = 3
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("20_xflnv")
+quest_complete = true
+settings_summary = "تحديث المهمة:
+المهمة: للتجربة
+التحقق مما إذا كانت المهمة مكتملة"
+
+[node name="QuestActivatedSwitch" parent="NPC/QuestActivatedSwitch2" instance=ExtResource("23_vtf5b")]
+"نوع_التحقق" = 2
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("20_xflnv")
+quest_step = 3
+settings_summary = "تحديث المهمة:
+المهمة: للتجربة
+التحقق مما إذا كان اللاعب في الخطوة: ya"
+
+[node name="QuestActivatedSwitch" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch" instance=ExtResource("23_vtf5b")]
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+linked_quest = ExtResource("20_xflnv")
+settings_summary = "تحديث المهمة:
+المهمة: للتجربة
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch/QuestActivatedSwitch" instance=ExtResource("10_s1pmn")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "الحجر في مكان ما هنا، بين الوحوش. اذهب وابحث عنه، وحظك سيكون مرشدك"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch2" parent="NPC/QuestActivatedSwitch2" instance=ExtResource("23_vtf5b")]
+"نوع_التحقق" = 2
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("20_xflnv")
+quest_step = 3
+settings_summary = "تحديث المهمة:
+المهمة: للتجربة
+التحقق مما إذا كان اللاعب في الخطوة: ya"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2" instance=ExtResource("10_s1pmn")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "ممتاز! لقد تمكنت من استعادة الحجر. مع هذا، تبدأ مغامرتك الحقيقية. حظًا سعيدًا في ما هو قادم!"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger2" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction" instance=ExtResource("20_mgke4")]
+position = Vector2(0, -15)
+signal_name = "finished"
+linked_quest = ExtResource("24_0j6pc")
+quest_step = 3
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+المهمة: اعد المفتاح
+الخطوة: 3 - ابحث عن حبك"
+
+[node name="Node" type="Node" parent="NPC/QuestActivatedSwitch2/QuestActivatedSwitch2/DialogInteraction/QuestAdvanceTrigger2"]
+script = SubResource("GDScript_a2klq")
+
+[node name="QuestActivatedSwitch3" parent="NPC" instance=ExtResource("23_vtf5b")]
+"نوع_التحقق" = 3
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("20_xflnv")
+settings_summary = "تحديث المهمة:
+المهمة: للتجربة
+التحقق مما إذا كانت المهمة مكتملة"
+
+[node name="QuestActivatedSwitch" parent="NPC/QuestActivatedSwitch3" instance=ExtResource("23_vtf5b")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("22_wrnjp")
+settings_summary = "تحديث المهمة:
+المهمة: ايجاد  كارلوس 
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch" instance=ExtResource("10_s1pmn")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "هناك مهمة اخرى لك عليك إيجاد كارلوس لكنه ليس من السهل العثور عليه هل أنت مستعد للمهمة"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogChoice" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("16_as0ht")
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://bhoxv42n8rdsq"
+
+[node name="DialogBranch" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = " قبول المهمة"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="QuestAdvanceTrigger" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("20_mgke4")]
+signal_name = "selected"
+linked_quest = ExtResource("22_wrnjp")
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "نعم سأجده بأي ثمن"
+npc_info = ExtResource("25_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("11_ufet7")
+text = "رائع سمعت أنه شوهد آخر مرة بالقرب من  الغابة ابحث هناك لكن كن حذرًا"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogBranch2" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("17_lam8a")
+text = "رفض المهمة"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://c80ln4eok2stu"
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "لدي مهمة أخرى"
+npc_info = ExtResource("25_abg8o")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="DialogText2" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("11_ufet7")
+text = "حسنًا لكن إذا غيرت رأيك عد إلي فالمهمة لا تزال قائمة"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch5" parent="NPC/QuestActivatedSwitch3" instance=ExtResource("23_vtf5b")]
+"نوع_التحقق" = 3
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("22_wrnjp")
+quest_complete = true
+settings_summary = "تحديث المهمة:
+المهمة: ايجاد  كارلوس 
+التحقق مما إذا كانت المهمة مكتملة"
+
+[node name="QuestActivatedSwitch" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5" instance=ExtResource("23_vtf5b")]
+"إزالة_عند_التفعيل" = true
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: ايجاد  كارلوس 
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="QuestActivatedSwitch" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5/QuestActivatedSwitch" instance=ExtResource("23_vtf5b")]
+"إزالة_عند_التفعيل" = true
+"تحرير_عند_الإزالة" = true
+linked_quest = ExtResource("22_wrnjp")
+settings_summary = "تحديث المهمة:
+المهمة: ايجاد  كارلوس 
+التحقق مما إذا كان اللاعب يمتلك المهمة"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5/QuestActivatedSwitch/QuestActivatedSwitch" instance=ExtResource("10_s1pmn")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5/QuestActivatedSwitch/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "كارلوس في مكان ما هنا، اذهب وابحث عنه، وحظك سيكون مرشدك"
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestActivatedSwitch2" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5" instance=ExtResource("23_vtf5b")]
+"نوع_التحقق" = 2
+"التفاعل_مع_الإشارة_العالمية" = true
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 2
+settings_summary = "تحديث المهمة:
+المهمة: ايجاد  كارلوس 
+التحقق مما إذا كان اللاعب في الخطوة:  العودة الى هولمز"
+
+[node name="DialogInteraction" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5/QuestActivatedSwitch2" instance=ExtResource("10_s1pmn")]
+
+[node name="DialogText" type="Node" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("11_ufet7")
+text = "أحسنت، وجدت كارلوس. الان عد اليه سوف يعلمك الكثير."
+npc_info = ExtResource("23_a2klq")
+metadata/_custom_type_script = "uid://7qrcj0xrfdwc"
+
+[node name="QuestAdvanceTrigger" parent="NPC/QuestActivatedSwitch3/QuestActivatedSwitch5/QuestActivatedSwitch2/DialogInteraction" instance=ExtResource("20_mgke4")]
+signal_name = "finished"
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 2
+quest_complete = true
+
+[node name="Pot5" parent="." instance=ExtResource("18_gcr0t")]
+position = Vector2(497, 18)
+
+[node name="Pot7" parent="." instance=ExtResource("18_gcr0t")]
+position = Vector2(519, 25)
+
+[node name="Pot6" parent="." instance=ExtResource("18_gcr0t")]
+position = Vector2(496, 37)

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://ccuhbbh3v0loi"]
+
+[ext_resource type="Script" uid="uid://b73hijmin5dn2" path="res://quests/scripts/quest_reward_item.gd" id="1_mxe02"]
+[ext_resource type="Script" uid="uid://ej3xbi7xbvg1" path="res://quests/scripts/quest_resource.gd" id="2_26tag"]
+[ext_resource type="Resource" uid="uid://ct6bkf4fiosl5" path="res://Items/spider_king_blood.tres" id="2_d2pnb"]
+
+[sub_resource type="Resource" id="Resource_ryij7"]
+script = ExtResource("1_mxe02")
+item = ExtResource("2_d2pnb")
+quantity = 1
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[resource]
+script = ExtResource("2_26tag")
+title = "للتجربة"
+description = "just test nvm"
+steps = Array[String](["idk", "maybe", "ya"])
+reward_xp = 40
+reward_items = Array[ExtResource("1_mxe02")]([SubResource("Resource_ryij7")])
+metadata/_custom_type_script = "uid://ej3xbi7xbvg1"

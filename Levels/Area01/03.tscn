@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=4 uid="uid://di637arhv02o2"]
+
+[ext_resource type="Script" uid="uid://d2eyblbal755o" path="res://Levels/scripts/level.gd" id="1_bspbj"]
+[ext_resource type="AudioStream" uid="uid://io7jxqk648xa" path="res://Levels/music/example_music_01.ogg" id="2_wavkr"]
+[ext_resource type="PackedScene" uid="uid://cq32mohonpsw3" path="res://Tile Maps/grass-tiles-01.tscn" id="3_hd7c7"]
+[ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://Levels/player_spawn.tscn" id="4_j7hqw"]
+[ext_resource type="PackedScene" uid="uid://b7x3cvq6i0qvf" path="res://Enemies/Slime/slime.tscn" id="5_6j82e"]
+[ext_resource type="PackedScene" uid="uid://vlpiuopcomwi" path="res://Levels/level_transition.tscn" id="5_40pm8"]
+[ext_resource type="PackedScene" uid="uid://b63km2avcjbgb" path="res://GeneralNodes/EnemyCounter/enemy_counter.tscn" id="5_v72oj"]
+[ext_resource type="PackedScene" uid="uid://cwby8egx8vwx2" path="res://quests/utility_nodes/quest_activated_switch.tscn" id="7_crp14"]
+[ext_resource type="Resource" uid="uid://2ttp6v5af3bt" path="res://quests/apple_qus.tres" id="8_5waxo"]
+[ext_resource type="PackedScene" uid="uid://b523kljtfiar7" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="9_lry6g"]
+[ext_resource type="PackedScene" uid="uid://d0wf2qqncvj5t" path="res://GeneralNodes/ItemDropper/item_dropper.tscn" id="10_5waxo"]
+[ext_resource type="Resource" uid="uid://c7vqmga47mm5v" path="res://Items/holmz_apple.tres" id="11_lry6g"]
+
+[node name="03" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_bspbj")
+music = ExtResource("2_wavkr")
+
+[node name="grass-tiles-01" parent="." instance=ExtResource("3_hd7c7")]
+tile_map_data = PackedByteArray("AAAAAP//AAACAAUAAAAAAAAAAAACAAYAAAAAAAEAAAANAAQAAAAAAAIAAAANAAYAAAAAAAMAAAANAAcAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAABAAIAAAAAAAcAAAANAAQAAAAAAAgAAAANAAUAAAABAP//AAADAAUAAAABAAAAAAADAAYAAAABAAEAAAAOAAQAAAABAAIAAAAOAAYAAAABAAMAAAAOAAcAAAABAAQAAAABAAAAAAABAAUAAAABAAAAAAABAAYAAAABAAIAAAABAAcAAAAOAAQAAAABAAgAAAAOAAUAAAACAP//AAAEAAUAAAACAAAAAAAEAAYAAAACAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAACAAQAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAACAAAAAAACAAcAAAACAAAAAAACAAgAAAAKAAQAAAADAP//AAACAAUAAAADAAAAAAACAAYAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAALAAQAAAAEAP//AAADAAUAAAAEAAAAAAADAAYAAAAEAAEAAAABAAAAAAAEAAIAAAABAAAAAAAEAAMAAAABAAAAAAAEAAQAAAABAAAAAAAEAAUAAAACAAEAAAAEAAYAAAABAAAAAAAEAAcAAAABAAAAAAAEAAgAAAAMAAQAAAAFAP//AAAEAAUAAAAFAAAAAAAEAAYAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAAFAAMAAAACAAAAAAAFAAQAAAACAAAAAAAFAAUAAAACAAAAAAAFAAYAAAACAAAAAAAFAAcAAAACAAAAAAAFAAgAAAANAAQAAAAGAP//AAACAAUAAAAGAAAAAAACAAYAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAALAAQAAAAHAP//AAADAAUAAAAHAAAAAAADAAYAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAAAAAAHAAQAAAABAAAAAAAHAAUAAAABAAAAAAAHAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAgAAAAMAAQAAAAIAP//AAAEAAUAAAAIAAAAAAAEAAYAAAAIAAEAAAACAAAAAAAIAAIAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAIAAUAAAACAAAAAAAIAAYAAAACAAAAAAAIAAcAAAACAAAAAAAIAAgAAAANAAQAAAAJAP//AAACAAUAAAAJAAAAAAACAAYAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAALAAQAAAAKAP//AAADAAUAAAAKAAAAAAADAAYAAAAKAAEAAAABAAAAAAAKAAIAAAABAAAAAAAKAAMAAAABAAAAAAAKAAQAAAABAAAAAAAKAAUAAAABAAAAAAAKAAYAAAABAAAAAAAKAAcAAAABAAAAAAAKAAgAAAAMAAQAAAALAP//AAAEAAUAAAALAAAAAAAEAAYAAAALAAEAAAACAAAAAAALAAIAAAACAAAAAAALAAMAAAACAAAAAAALAAQAAAACAAAAAAALAAUAAAACAAAAAAALAAYAAAACAAAAAAALAAcAAAACAAAAAAALAAgAAAANAAQAAAAMAP//AAACAAUAAAAMAAAAAAACAAYAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAALAAQAAAANAP//AAADAAUAAAANAAAAAAADAAYAAAANAAEAAAABAAAAAAANAAIAAAABAAAAAAANAAMAAAABAAAAAAANAAQAAAABAAAAAAANAAUAAAABAAAAAAANAAYAAAABAAAAAAANAAcAAAABAAAAAAANAAgAAAAMAAQAAAAOAP//AAAEAAUAAAAOAAAAAAAEAAYAAAAOAAEAAAACAAAAAAAOAAIAAAACAAAAAAAOAAMAAAACAAAAAAAOAAQAAAACAAAAAAAOAAUAAAACAAAAAAAOAAYAAAACAAAAAAAOAAcAAAACAAAAAAAOAAgAAAANAAQAAAAPAP//AAACAAUAAAAPAAAAAAACAAYAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAALAAQAAAAQAP//AAADAAUAAAAQAAAAAAADAAYAAAAQAAEAAAAKAAQAAAAQAAIAAAAKAAUAAAAQAAMAAAAKAAUAAAAQAAQAAAAKAAUAAAAQAAUAAAAKAAUAAAAQAAYAAAAKAAYAAAAQAAcAAAAKAAcAAAAQAAgAAAAMAAQAAAA=")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_j7hqw")]
+position = Vector2(303, 163)
+
+[node name="Slime4" parent="." instance=ExtResource("5_6j82e")]
+position = Vector2(268, 251)
+
+[node name="Slime5" parent="." instance=ExtResource("5_6j82e")]
+position = Vector2(267, 52)
+
+[node name="Slime6" parent="." instance=ExtResource("5_6j82e")]
+position = Vector2(120, 56)
+
+[node name="Slime7" parent="." instance=ExtResource("5_6j82e")]
+position = Vector2(486, 238)
+
+[node name="Slime8" parent="." instance=ExtResource("5_6j82e")]
+position = Vector2(477, 57)
+
+[node name="EnemyCounter" parent="." instance=ExtResource("5_v72oj")]
+position = Vector2(289, 160)
+
+[node name="Slime3" parent="EnemyCounter" instance=ExtResource("5_6j82e")]
+position = Vector2(188, -11)
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_40pm8")]
+position = Vector2(0, 176)
+level = "uid://wbw5xjllwbfr"
+target_transition_area = "LevelTransition2"
+size = 3
+
+[node name="QuestActivatedSwitch" parent="LevelTransition" instance=ExtResource("7_crp14")]
+position = Vector2(3, 2)
+
+[node name="QuestAdvanceTrigger" parent="LevelTransition/QuestActivatedSwitch" instance=ExtResource("9_lry6g")]
+linked_quest = ExtResource("8_5waxo")
+quest_step = 1
+
+[node name="ItemDropper" parent="." instance=ExtResource("10_5waxo")]
+position = Vector2(289, 160)
+item_data = ExtResource("11_lry6g")
+
+[node name="QuestAdvanceTrigger" parent="ItemDropper" instance=ExtResource("9_lry6g")]
+signal_name = "drop_collected"
+linked_quest = ExtResource("8_5waxo")
+quest_step = 2
+
+[connection signal="enemies_defeated" from="EnemyCounter" to="ItemDropper" method="drop_item"]
+[connection signal="entered_from_here" from="LevelTransition" to="LevelTransition/QuestActivatedSwitch/QuestAdvanceTrigger" method="advance_quest"]

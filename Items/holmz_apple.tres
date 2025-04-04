@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://c7vqmga47mm5v"]
+
+[ext_resource type="Script" uid="uid://bwq22ry1guuwt" path="res://Items/item_effects/item_effect.gd" id="1_aeqne"]
+[ext_resource type="Script" uid="uid://b405hrw22am82" path="res://Items/scripts/item_data.gd" id="2_kvhx1"]
+[ext_resource type="Texture2D" uid="uid://bmjan6873e3h5" path="res://Items/sprites/items.png" id="3_2l2n7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aa43"]
+atlas = ExtResource("3_2l2n7")
+region = Rect2(202, 8, 13, 16)
+
+[resource]
+script = ExtResource("2_kvhx1")
+name = "تفاحة الحكمة"
+description = "هي تفاحة نادرة تسقط من الوحوش في غابة التفاح. ويمكن جمعها لاستخدامها في تحسين مهاراتك. إنها أحد المكونات المهمة التي يحتاجها هولمز في القرية."
+texture = SubResource("AtlasTexture_7aa43")
+effects = Array[ExtResource("1_aeqne")]([])

@@ -1,0 +1,235 @@
+[gd_scene load_steps=29 format=3 uid="uid://kqkgryikvodg"]
+
+[ext_resource type="Script" uid="uid://cgku25jumyxiu" path="res://title_scene/title_scene.gd" id="1_2cqmg"]
+[ext_resource type="Texture2D" uid="uid://c33bcy1tcvkx6" path="res://Picsart_25-03-23_08-13-46-465.png" id="1_qtwfk"]
+[ext_resource type="Texture2D" uid="uid://i2mgfmlb7acc" path="res://title_screen_clean_only_background.png" id="1_uvhto"]
+[ext_resource type="AudioStream" uid="uid://cph6d67x0q2hx" path="res://title_scene/audio/waves.mp3" id="2_iqxkd"]
+[ext_resource type="Texture2D" uid="uid://ciwg86iiqwefw" path="res://button_hover.png" id="3_0q24l"]
+[ext_resource type="AudioStream" uid="uid://bs7rsijo2pb3f" path="res://title_scene/audio/menu_focus.wav" id="3_pppgw"]
+[ext_resource type="Texture2D" uid="uid://bu5xjbvkkc8dl" path="res://button_focus.png" id="4_1falw"]
+[ext_resource type="Texture2D" uid="uid://byjaf7udrp320" path="res://button_pressed.png" id="4_5wnq4"]
+[ext_resource type="AudioStream" uid="uid://08aqunggwta1" path="res://title_scene/audio/menu_select.wav" id="4_muntm"]
+[ext_resource type="Texture2D" uid="uid://b1hlf3x11a3dq" path="res://button_disabled.png" id="5_xyq50"]
+[ext_resource type="Texture2D" uid="uid://q3panuxxown8" path="res://button_default.png" id="8_e0tql"]
+[ext_resource type="FontFile" uid="uid://cnrqk38ddqqwy" path="res://GUI/fonts/m5x7.ttf" id="8_wgj1g"]
+[ext_resource type="PackedScene" uid="uid://dr4blo7ya448q" path="res://Levels/player_spawn.tscn" id="10_4u5jp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iqxkd"]
+load_path = "res://.godot/imported/button_disabled.png-ed2312253a0c26fe87d0f0d2366d35d4.ctex"
+
+[sub_resource type="Animation" id="Animation_dt7ym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qq4i3"]
+resource_name = "default"
+length = 4.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05, 0.6, 1, 1.35, 1.8, 2.4, 2.8),
+"transitions": PackedFloat32Array(-2, -0.68302, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1), Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1), Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fp78m"]
+resource_name = "dir_newgame"
+step = 0.05
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfnot"]
+_data = {
+&"RESET": SubResource("Animation_dt7ym"),
+&"default": SubResource("Animation_qq4i3"),
+&"dir_newgame": SubResource("Animation_fp78m")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fp78m"]
+texture = ExtResource("4_1falw")
+modulate_color = Color(0.45098, 0.682353, 0.266667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1falw"]
+texture = ExtResource("5_xyq50")
+modulate_color = Color(0.647059, 0.768627, 0.541176, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xyq50"]
+texture = ExtResource("3_0q24l")
+modulate_color = Color(0.560784, 0.796078, 0.345098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e0tql"]
+texture = ExtResource("4_5wnq4")
+modulate_color = Color(0.427451, 0.631373, 0.247059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m28gh"]
+texture = ExtResource("8_e0tql")
+modulate_color = Color(0.490196, 0.709804, 0.298039, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1a1kh"]
+texture = ExtResource("4_1falw")
+modulate_color = Color(0.45098, 0.682353, 0.266667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgj1g"]
+texture = ExtResource("5_xyq50")
+modulate_color = Color(0.45098, 0.682353, 0.266667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lj5tl"]
+texture = ExtResource("3_0q24l")
+modulate_color = Color(0.560784, 0.796078, 0.345098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkwea"]
+texture = ExtResource("4_5wnq4")
+modulate_color = Color(0.427451, 0.631373, 0.247059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svbj5"]
+texture = ExtResource("8_e0tql")
+modulate_color = Color(0.490196, 0.709804, 0.298039, 1)
+
+[node name="TitleScene" type="Node2D"]
+z_index = 1
+script = ExtResource("1_2cqmg")
+music = ExtResource("2_iqxkd")
+button_focus_audio = ExtResource("3_pppgw")
+button_press_audio = ExtResource("4_muntm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.02419, 1.00519)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1790.0
+offset_bottom = 1022.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.410584, 0.413019)
+texture = ExtResource("1_uvhto")
+metadata/_edit_use_anchors_ = true
+
+[node name="shadow" type="Sprite2D" parent="CanvasLayer/Control"]
+modulate = Color(0.37193, 0.501783, 0.362377, 1)
+position = Vector2(658.081, 579.99)
+scale = Vector2(1.542, 1.776)
+texture = ExtResource("5_xyq50")
+
+[node name="shadow3" type="Sprite2D" parent="CanvasLayer/Control"]
+modulate = Color(0.37193, 0.501783, 0.362377, 1)
+position = Vector2(656.685, 430.899)
+scale = Vector2(1.54244, 1.77625)
+texture = SubResource("CompressedTexture2D_iqxkd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(634.648, 186.034)
+scale = Vector2(0.3, 0.24)
+texture = ExtResource("1_qtwfk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_vfnot")
+}
+autoplay = "default"
+
+[node name="ButtonNew" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.386348
+anchor_top = 0.497425
+anchor_right = 2.99963
+anchor_bottom = 1.77937
+offset_left = -10.6592
+offset_top = 25.0
+offset_right = 121.341
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_disabled_color = Color(0.643137, 0.705882, 0.560784, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.423529, 0.509804, 0.317647, 1)
+theme_override_colors/icon_hover_color = Color(0.654902, 0.752941, 0.435294, 1)
+theme_override_colors/icon_pressed_color = Color(0.486275, 0.611765, 0.32549, 1)
+theme_override_colors/icon_focus_color = Color(0.486275, 0.611765, 0.32549, 1)
+theme_override_colors/icon_normal_color = Color(0.584314, 0.694118, 0.392157, 1)
+theme_override_colors/font_color = Color(0.941176, 1, 0.890196, 1)
+theme_override_colors/font_focus_color = Color(0.976471, 1, 0.898039, 1)
+theme_override_colors/font_pressed_color = Color(0.894118, 0.956863, 0.8, 1)
+theme_override_fonts/font = ExtResource("8_wgj1g")
+theme_override_font_sizes/font_size = 500
+theme_override_styles/focus = SubResource("StyleBoxTexture_fp78m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_1falw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xyq50")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e0tql")
+theme_override_styles/normal = SubResource("StyleBoxTexture_m28gh")
+text = "لعبة جديدة"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonContinue" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485329
+anchor_top = 0.347693
+anchor_right = 3.40564
+anchor_bottom = 2.21575
+offset_left = -134.007
+offset_top = 279.909
+offset_right = -395.007
+offset_bottom = -110.091
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_disabled_color = Color(0.643137, 0.705882, 0.560784, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.423529, 0.509804, 0.317647, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.486275, 0.611765, 0.32549, 1)
+theme_override_colors/icon_focus_color = Color(0.72549, 0.8, 0.517647, 1)
+theme_override_colors/icon_normal_color = Color(0.584314, 0.694118, 0.392157, 1)
+theme_override_colors/font_color = Color(0.941176, 1, 0.890196, 1)
+theme_override_colors/font_focus_color = Color(0.976471, 1, 0.898039, 1)
+theme_override_colors/font_pressed_color = Color(0.894118, 0.956863, 0.8, 1)
+theme_override_fonts/font = ExtResource("8_wgj1g")
+theme_override_font_sizes/font_size = 500
+theme_override_styles/focus = SubResource("StyleBoxTexture_1a1kh")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wgj1g")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lj5tl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fkwea")
+theme_override_styles/normal = SubResource("StyleBoxTexture_svbj5")
+text = "استئناف
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 4
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("10_4u5jp")]
+position = Vector2(-169, 178)

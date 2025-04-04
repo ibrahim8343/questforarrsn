@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://bped8nmqt0pgm"]
+
+[ext_resource type="Script" uid="uid://b73hijmin5dn2" path="res://quests/scripts/quest_reward_item.gd" id="1_sq38t"]
+[ext_resource type="Resource" uid="uid://prvahwyi1iha" path="res://Items/apple.tres" id="2_1g2d6"]
+[ext_resource type="Script" uid="uid://ej3xbi7xbvg1" path="res://quests/scripts/quest_resource.gd" id="2_csw1s"]
+
+[sub_resource type="Resource" id="Resource_5i5be"]
+script = ExtResource("1_sq38t")
+item = ExtResource("2_1g2d6")
+quantity = 1
+metadata/_custom_type_script = "uid://b73hijmin5dn2"
+
+[resource]
+script = ExtResource("2_csw1s")
+title = "حجر هولمز"
+description = "حجر هولمز يحمل أسرارًا عظيمة، لكن العثور عليه محفوف بالمخاطر. ابحث عنه بحذر، فقد ابتلع الغموض كل من سعى إليه"
+steps = Array[String](["ملاقاة المخلوقات", "الحصول على الحجر", "إعادة الحجر الى هولمز"])
+reward_xp = 25
+reward_items = Array[ExtResource("1_sq38t")]([SubResource("Resource_5i5be")])
